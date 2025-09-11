@@ -1,0 +1,72 @@
+# Core FastAPI dependencies
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+starlette-context==0.3.6  # Request context and correlation IDs
+
+# Database and ORM
+sqlmodel==0.0.14
+asyncpg==0.29.0
+greenlet==3.0.3
+alembic==1.13.1  # Database migrations
+
+# Supabase client
+supabase==2.3.4
+
+# Data validation and serialization
+pydantic==2.5.3
+pydantic-settings==2.1.0
+orjson==3.9.12  # Fastest JSON library
+msgpack==1.0.7  # Alternative serialization
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+slowapi==0.1.9  # Rate limiting
+
+# Modern utilities
+httpx==0.26.0  # Async HTTP client
+tenacity==8.2.3  # Retry logic
+aiocache[redis]==0.12.2  # Async caching
+python-dateutil==2.8.2
+
+# Observability
+loguru==0.7.2  # Better logging
+opentelemetry-api==1.22.0
+opentelemetry-sdk==1.22.0
+opentelemetry-instrumentation-fastapi==0.43b0
+prometheus-client==0.19.0
+sentry-sdk==1.40.0  # Error tracking
+
+# CLI and Development
+rich==13.7.0  # Beautiful terminal output
+typer==0.9.0  # CLI framework
+python-dotenv==1.0.0
+
+# Testing
+pytest==7.4.4
+pytest-asyncio==0.23.3
+pytest-cov==4.1.0
+factory-boy==3.3.0  # Test data factories
+hypothesis==6.96.1  # Property-based testing
+respx==0.20.2  # Mock httpx
+faker==22.2.0  # Fake data generation
+
+# Code quality
+ruff==0.1.14  # Fast Python linter
+mypy==1.8.0  # Type checking
+pre-commit==3.6.0
+
+# Optional: Advanced features
+strawberry-graphql[fastapi]==0.217.1  # GraphQL support
+redis==5.0.1  # For caching/queues
+celery==5.3.6  # Task queue
+dramatiq==1.15.0  # Modern task queue alternative
+
+# Optional: AI/ML parsing
+pillow==10.2.0  # Image processing
+python-barcode==0.15.1
+pyzbar==0.1.9
+pytesseract==0.3.10
+opencv-python==4.9.0.80
+numpy==1.26.3

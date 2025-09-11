@@ -1,0 +1,1 @@
+# LabelSquor API

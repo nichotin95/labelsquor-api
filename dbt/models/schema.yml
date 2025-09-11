@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: vw_product_current
+    tests: []
+
+tests:
+  - name: constraints
+    config:
+      severity: error
+
+seeds: []
+
+sources: []
