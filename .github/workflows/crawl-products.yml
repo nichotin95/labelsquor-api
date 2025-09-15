@@ -1,0 +1,81 @@
+name: Crawl Products
+
+on:
+  schedule:
+    # Run every day at 2 AM UTC (7:30 AM IST)
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      spider:
+        description: 'Spider to run (bigbasket, blinkit, zepto, all)'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - bigbasket
+          - blinkit
+          - zepto
+          - amazon_in
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        spider: ${{ fromJson(github.event_name == 'workflow_dispatch' && github.event.inputs.spider != 'all' && format('["{0}"]', github.event.inputs.spider) || '["bigbasket", "blinkit", "zepto"]') }}
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Cache pip packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('crawlers/requirements.txt') }}
+      
+      - name: Install dependencies
+        run: |
+          cd crawlers
+          pip install -r requirements.txt
+          playwright install chromium
+      
+      - name: Run spider
+        env:
+          LABELSQUOR_API_URL: ${{ secrets.LABELSQUOR_API_URL }}
+          LABELSQUOR_API_KEY: ${{ secrets.LABELSQUOR_API_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          CLOUD_STORAGE_TYPE: s3
+          CLOUD_STORAGE_BUCKET: labelsquor-crawl-data
+        run: |
+          cd crawlers
+          scrapy crawl ${{ matrix.spider }} \
+            -L INFO \
+            -s CLOSESPIDER_ITEMCOUNT=100 \
+            -s JOBDIR=jobs/${{ matrix.spider }}
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: crawl-logs-${{ matrix.spider }}
+          path: crawlers/logs/
+      
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Crawl failed for ${context.payload.inputs?.spider || 'scheduled crawl'}`,
+              body: `The crawl job failed. Check the [workflow run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`
+            })

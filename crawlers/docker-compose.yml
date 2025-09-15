@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # Scrapyd for managing spiders
+  scrapyd:
+    build: .
+    command: scrapyd
+    ports:
+      - "6800:6800"
+    environment:
+      - LABELSQUOR_API_URL=http://api:8000
+      - CLOUD_STORAGE_TYPE=local
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - labelsquor
+
+  # Redis for distributed crawling
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - labelsquor
+
+  # Scrapyd Web UI
+  scrapydweb:
+    image: germey/scrapydweb
+    ports:
+      - "5000:5000"
+    environment:
+      - SCRAPYD_SERVERS=http://scrapyd:6800
+    depends_on:
+      - scrapyd
+    networks:
+      - labelsquor
+
+networks:
+  labelsquor:
+    external: true
