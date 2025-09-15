@@ -63,6 +63,12 @@ redis==5.0.1  # For caching/queues
 celery==5.3.6  # Task queue
 dramatiq==1.15.0  # Modern task queue alternative
 
+# Web scraping
+beautifulsoup4==4.12.3  # HTML parsing
+lxml==5.1.0  # Fast XML/HTML parser
+playwright==1.41.1  # For JavaScript-heavy sites
+scrapy==2.11.0  # Advanced web scraping framework
+
 # Optional: AI/ML parsing
 pillow==10.2.0  # Image processing
 python-barcode==0.15.1
@@ -70,3 +76,7 @@ pyzbar==0.1.9
 pytesseract==0.3.10
 opencv-python==4.9.0.80
 numpy==1.26.3
+
+# Task processing
+dramatiq[redis]==1.15.0  # Modern task queue
+apscheduler==3.10.4  # Job scheduling

@@ -1,13 +1,14 @@
 """
 Source and artifact models
 """
-from typing import Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING, Dict, Any
 from datetime import datetime
-from sqlmodel import Field, SQLModel, Relationship
+from sqlmodel import Field, SQLModel, Relationship, Column, JSON
 from uuid import UUID, uuid4
 
 if TYPE_CHECKING:
     from .product import Product
+    from .retailer import Retailer
 
 
 class SourcePage(SQLModel, table=True):
@@ -16,17 +17,47 @@ class SourcePage(SQLModel, table=True):
     
     source_page_id: UUID = Field(default_factory=uuid4, primary_key=True)
     product_id: Optional[UUID] = Field(foreign_key="product.product_id", default=None)
-    retailer: str
-    url: str
-    crawl_batch_id: Optional[str] = None
-    html_object_key: Optional[str] = None
+    retailer_id: Optional[UUID] = Field(foreign_key="retailer.retailer_id", default=None)
+    
+    # URL and content
+    url: str = Field(unique=True, index=True)
+    title: Optional[str] = None
+    meta_description: Optional[str] = None
+    
+    # Crawl tracking
+    crawl_session_id: Optional[UUID] = Field(foreign_key="crawl_session.session_id", default=None)
     status_code: Optional[int] = None
-    fingerprint_sha256: Optional[str] = None
-    first_seen_at: Optional[datetime] = None
-    last_seen_at: Optional[datetime] = None
+    html_object_key: Optional[str] = None
+    
+    # Content fingerprinting
+    content_hash: Optional[str] = None  # Hash of extracted data
+    html_hash: Optional[str] = None     # Hash of raw HTML
+    
+    # Extracted data
+    extracted_data: Optional[Dict[str, Any]] = Field(default=None, sa_column=Column(JSON))
+    # {
+    #   "price": 150,
+    #   "mrp": 200,
+    #   "in_stock": true,
+    #   "seller": "Cloudtail India",
+    #   "ratings": {"average": 4.2, "count": 1523},
+    #   "images": ["url1", "url2"],
+    #   "breadcrumbs": ["Grocery", "Snacks", "Chips"]
+    # }
+    
+    # Timing
+    first_seen_at: datetime = Field(default_factory=datetime.utcnow)
+    last_crawled_at: Optional[datetime] = None
+    last_changed_at: Optional[datetime] = None
+    next_crawl_at: Optional[datetime] = None
+    
+    # Status
+    is_active: bool = Field(default=True)
+    is_discontinued: bool = Field(default=False)
     
     # Relationships
     product: Optional["Product"] = Relationship(back_populates="source_pages")
+    retailer: Optional["Retailer"] = Relationship(back_populates="source_pages")
 
 
 class ProductImage(SQLModel, table=True):

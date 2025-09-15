@@ -5,10 +5,14 @@ from .brand_service import BrandService
 from .product_service import ProductService
 from .parsing_service import ParsingService
 from .scoring_service import ScoringService
+from .crawler_service import CrawlerService
+from .pipeline_service import PipelineService
 
 __all__ = [
     "BrandService",
     "ProductService", 
     "ParsingService",
-    "ScoringService"
+    "ScoringService",
+    "CrawlerService",
+    "PipelineService"
 ]
