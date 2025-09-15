@@ -1,0 +1,106 @@
+{
+  "search_terms": {
+    "brands": {
+      "popular_indian": [
+        "maggi", "lays", "kurkure", "uncle chips", "bingo", "haldiram",
+        "amul", "mother dairy", "britannia", "parle", "nestle", "cadbury",
+        "dabur", "patanjali", "himalaya", "vicco", "bajaj", "godrej",
+        "tata", "mtr", "everest", "mdh", "catch", "ching's secret"
+      ],
+      "beverages": [
+        "coca cola", "pepsi", "thums up", "limca", "sprite", "maaza",
+        "frooti", "slice", "appy", "real", "tropicana", "minute maid",
+        "bournvita", "horlicks", "complan", "boost", "milo", "tang"
+      ],
+      "snacks": [
+        "chips", "namkeen", "bhujia", "mixture", "papad", "khakhra",
+        "biscuits", "cookies", "rusk", "cake", "wafers", "chocolates"
+      ],
+      "staples": [
+        "atta", "rice", "dal", "oil", "ghee", "sugar", "salt", "spices",
+        "masala", "flour", "besan", "sooji", "maida", "poha", "sabudana"
+      ],
+      "dairy": [
+        "milk", "curd", "yogurt", "paneer", "cheese", "butter", "cream",
+        "lassi", "buttermilk", "khoya", "condensed milk"
+      ],
+      "instant_foods": [
+        "noodles", "pasta", "vermicelli", "soup", "ready to eat", "instant mix",
+        "breakfast cereal", "oats", "muesli", "cornflakes", "chocos"
+      ]
+    },
+    "categories": {
+      "bigbasket": [
+        {"main": "snacks-branded-foods", "sub": "chips-crisps"},
+        {"main": "snacks-branded-foods", "sub": "namkeen-snacks"},
+        {"main": "snacks-branded-foods", "sub": "biscuits-cookies"},
+        {"main": "snacks-branded-foods", "sub": "chocolates-candies"},
+        {"main": "snacks-branded-foods", "sub": "noodles-pasta-vermicelli"},
+        {"main": "beverages", "sub": "soft-drinks"},
+        {"main": "beverages", "sub": "juices"},
+        {"main": "beverages", "sub": "health-energy-drinks"},
+        {"main": "dairy", "sub": "milk"},
+        {"main": "dairy", "sub": "curd"},
+        {"main": "dairy", "sub": "paneer-tofu"},
+        {"main": "dairy", "sub": "cheese"},
+        {"main": "bakery-cakes-dairy", "sub": "breads-buns"},
+        {"main": "staples", "sub": "atta-flours"},
+        {"main": "staples", "sub": "rice-rice-products"},
+        {"main": "staples", "sub": "dals-pulses"},
+        {"main": "staples", "sub": "edible-oils-ghee"},
+        {"main": "staples", "sub": "masalas-spices"},
+        {"main": "staples", "sub": "salt-sugar-jaggery"}
+      ],
+      "blinkit": [
+        {"path": "/c/chips-crisps-nachos/"},
+        {"path": "/c/biscuits-cookies/"},
+        {"path": "/c/chocolates-candies/"},
+        {"path": "/c/noodles-pasta/"},
+        {"path": "/c/soft-drinks-juices/"},
+        {"path": "/c/dairy-products/"},
+        {"path": "/c/atta-rice-dal/"}
+      ],
+      "zepto": [
+        {"path": "/categories/snacks-munchies"},
+        {"path": "/categories/biscuits-chocolates"},
+        {"path": "/categories/beverages"},
+        {"path": "/categories/dairy-bread"},
+        {"path": "/categories/atta-rice-dal"}
+      ]
+    }
+  },
+  "product_keywords": {
+    "health_focused": [
+      "sugar free", "low fat", "zero calorie", "high protein", "organic",
+      "whole grain", "multigrain", "gluten free", "vegan", "keto"
+    ],
+    "certifications": [
+      "fssai", "agmark", "bis", "iso", "india organic", "jaivik bharat",
+      "halal", "kosher", "non gmo", "rainforest alliance"
+    ],
+    "allergens": [
+      "contains milk", "contains nuts", "contains soy", "contains wheat",
+      "contains egg", "peanut free", "lactose free"
+    ]
+  },
+  "priority_products": {
+    "high": [
+      "maggi 2 minute noodles masala",
+      "lays india magic masala",
+      "parle g biscuits",
+      "britannia good day",
+      "amul butter",
+      "amul cheese",
+      "haldiram bhujia",
+      "coca cola",
+      "pepsi",
+      "cadbury dairy milk"
+    ],
+    "monitoring": [
+      "new launches",
+      "limited edition",
+      "seasonal products",
+      "festival special"
+    ]
+  }
+}
