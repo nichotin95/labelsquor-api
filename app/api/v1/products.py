@@ -109,9 +109,7 @@ class FilterOptions(BaseModel):
 
 # Consumer-facing endpoints
 @router.get("/search", response_model=ProductSearchResponse)
-@limiter.limit("100/minute")  # Rate limit for consumer endpoints
 async def search_products(
-    request,  # Required for rate limiting
     # Search parameters
     q: Optional[str] = Query(None, description="Search query (product name, brand, ingredients)"),
     

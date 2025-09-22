@@ -3,6 +3,7 @@ Discovery Orchestrator - Manages product discovery across all retailers
 """
 
 import asyncio
+import os
 from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
 
@@ -466,7 +467,9 @@ class DiscoveryOrchestrator:
                     detailed = parser.get_product_details(result["url"])
                     
                     # Merge search result with detailed data
-                    logger.info(f"Processing product: {result.get('name', 'Unknown')}")
+                    # Reduced logging for production
+                    if os.getenv("DEBUG_DISCOVERY", "false").lower() == "true":
+                        logger.info(f"Processing product: {result.get('name', 'Unknown')}")
                     products.append(
                         {
                             "url": result["url"],

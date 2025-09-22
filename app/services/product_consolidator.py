@@ -4,12 +4,12 @@ Merges product data from multiple retailers into a single refined record
 """
 
 import asyncio
+import os
 import statistics
 from collections import defaultdict
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
-from sentence_transformers import CrossEncoder
 from sqlalchemy import and_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -17,7 +17,6 @@ from app.core.logging import logger
 from app.models.product import Product, ProductIdentifier
 from app.models.source import SourcePage
 from app.services.parsing_service import ParsingService
-from app.services.product_matcher import ProductMatcher, RelevanceFilter
 
 
 class ProductConsolidator:
@@ -28,19 +27,8 @@ class ProductConsolidator:
 
     def __init__(self, db: AsyncSession):
         self.db = db
-        # TODO: Temporarily simplified - will re-enable advanced matching later
-        try:
-            self.matcher = ProductMatcher()
-            self.filter = RelevanceFilter()
-            self.parser = ParsingService()
-            # Cross-encoder for ranking information quality
-            self.quality_ranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
-        except ImportError as e:
-            logger.warning(f"Advanced matching disabled due to missing dependencies: {e}")
-            self.matcher = None
-            self.filter = None
-            self.parser = None
-            self.quality_ranker = None
+        self.parser = ParsingService()
+        logger.info("ProductConsolidator initialized with EAN-based identification")
 
     async def should_crawl_product(self, brand: str, product_name: str, retailer: str) -> Tuple[bool, Optional[str]]:
         """
@@ -60,26 +48,8 @@ class ProductConsolidator:
         )
         existing_products = existing.scalars().all()
 
-        # Check for matches
-        test_product = {"name": product_name, "brand": brand, "retailer": retailer}
-
-        if self.matcher:
-            match = self.matcher.find_duplicate(test_product, existing_products)
-        else:
-            match = None
-
-        if match:
-            # Check if we already have this retailer's data
-            identifiers = await self.db.execute(
-                select(ProductIdentifier).where(
-                    and_(ProductIdentifier.product_id == match.id, ProductIdentifier.retailer == retailer)
-                )
-            )
-
-            if identifiers.scalar_one_or_none():
-                return False, f"Product already exists: {match.id}"
-            else:
-                return True, f"Need data from {retailer} for existing product {match.id}"
+        # Simple check - we now rely on EAN-based identification in the AI pipeline
+        # This method is mainly for basic filtering now
 
         return True, "New product"
 
@@ -400,7 +370,9 @@ class ProductConsolidator:
             product_key = create_unique_product_key(product)
             debug_info = get_product_debug_info(product)
             
-            logger.info(f"Product: {debug_info['name']} | Brand: {debug_info['brand']} | Key: {product_key} | Retailer ID: {debug_info['retailer_id']}")
+            # Only log in debug mode
+            if os.getenv("DEBUG_CONSOLIDATION", "false").lower() == "true":
+                logger.info(f"Product: {debug_info['name']} | Brand: {debug_info['brand']} | Key: {product_key}")
             
             if product_key not in product_groups:
                 product_groups[product_key] = []

@@ -242,16 +242,11 @@ Output comprehensive analysis with detailed reasoning for each SQUOR dimension, 
         for i, url in enumerate(image_urls[:5], 1):  # Limit to 5 images
             prompt += f"Image {i}: {url}\n"
         
-        # DEBUG: Print the complete prompt and URLs
-        print("=" * 80)
-        print("🔍 PROMPT BEING SENT TO GEMINI:")
-        print("=" * 80)
-        print(prompt)
-        print("=" * 80)
-        print("📸 IMAGE URLs:")
-        for i, url in enumerate(image_urls[:5], 1):
-            print(f"  {i}. {url}")
-        print("=" * 80)
+# Log prompt and images for debugging (only in development)
+        if os.getenv("DEBUG_AI_PROMPTS", "false").lower() == "true":
+            print("🔍 PROMPT BEING SENT TO GEMINI:")
+            print(prompt[:200] + "..." if len(prompt) > 200 else prompt)
+            print(f"📸 IMAGE URLs: {len(image_urls)} images")
         
         # Configure tools with URL context
         tools = [
@@ -285,12 +280,10 @@ Output comprehensive analysis with detailed reasoning for each SQUOR dimension, 
                             text_parts.append(part.text)
                     response_text = "".join(text_parts)
             
-            # DEBUG: Print the AI response
-            print("🤖 GEMINI RESPONSE:")
-            print("=" * 80)
-            print(f"Response text ({len(response_text)} chars):")
-            print(response_text)
-            print("=" * 80)
+            # Log AI response for debugging (only in development)
+            if os.getenv("DEBUG_AI_RESPONSES", "false").lower() == "true":
+                print(f"🤖 GEMINI RESPONSE ({len(response_text)} chars):")
+                print(response_text[:500] + "..." if len(response_text) > 500 else response_text)
             
             if not response_text:
                 # Check if this might be quota exhaustion
@@ -311,10 +304,12 @@ Output comprehensive analysis with detailed reasoning for each SQUOR dimension, 
                 if json_match:
                     json_str = json_match.group(1) if json_match.lastindex else json_match.group()
                     raw_data = json.loads(json_str)
-                    print("✅ Successfully parsed JSON from AI response")
+                    if os.getenv("DEBUG_AI_RESPONSES", "false").lower() == "true":
+                        print("✅ Successfully parsed JSON from AI response")
                 else:
                     raw_data = {"error": "Failed to parse JSON", "raw": response_text}
-                    print("❌ Failed to parse JSON from AI response")
+                    if os.getenv("DEBUG_AI_RESPONSES", "false").lower() == "true":
+                        print("❌ Failed to parse JSON from AI response")
             
             # Track usage from response metadata
             if hasattr(response, 'usage_metadata') and response.usage_metadata:
