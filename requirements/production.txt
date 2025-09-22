@@ -1,0 +1,21 @@
+# Production requirements
+# Optimized for production deployment
+
+-r base.txt
+
+# Production server
+gunicorn==21.2.0
+
+# PostgreSQL connection pooling
+pgbouncer-python==0.1.0
+
+# APM and monitoring
+opentelemetry-api==1.23.0
+opentelemetry-sdk==1.23.0
+opentelemetry-instrumentation-fastapi==0.44b0
+
+# Security headers
+secure==0.3.0
+
+# Request ID tracking
+asgi-correlation-id==4.3.1

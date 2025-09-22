@@ -1,21 +1,24 @@
 """
 Common schemas used across the API
 """
-from typing import Optional, Generic, TypeVar, List
-from pydantic import BaseModel, Field
 
+from typing import Generic, List, Optional, TypeVar
+
+from pydantic import BaseModel, Field
 
 T = TypeVar("T")
 
 
 class PaginationParams(BaseModel):
     """Pagination parameters for list endpoints"""
+
     skip: int = Field(default=0, ge=0, description="Number of items to skip")
     limit: int = Field(default=20, ge=1, le=100, description="Number of items to return")
 
 
 class SearchParams(BaseModel):
     """Search parameters"""
+
     q: Optional[str] = Field(None, description="Search query")
     category_id: Optional[str] = Field(None, description="Filter by category")
     include_descendants: bool = Field(default=False, description="Include category descendants")
@@ -27,6 +30,7 @@ class SearchParams(BaseModel):
 
 class PaginatedResponse(BaseModel, Generic[T]):
     """Generic paginated response"""
+
     items: List[T]
     total: int
     skip: int
@@ -36,6 +40,7 @@ class PaginatedResponse(BaseModel, Generic[T]):
 
 class HealthCheckResponse(BaseModel):
     """Health check response"""
+
     status: str = "ok"
     timestamp: str
     version: str

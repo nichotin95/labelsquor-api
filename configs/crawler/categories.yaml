@@ -1,0 +1,136 @@
+# Category Configuration for LabelSquor Crawler
+# Maps our internal categories to retailer-specific paths
+
+# Format:
+# internal_category:
+#   display_name: Human-readable name
+#   keywords: Search keywords for this category
+#   retailers:
+#     bigbasket: /path/to/category/
+#     blinkit: /path/to/category/
+#     zepto: /path/to/category/
+
+categories:
+  snacks:
+    chips_crisps:
+      display_name: "Chips & Crisps"
+      keywords: [chips, crisps, wafers, potato chips]
+      popular_brands: [lays, kurkure, bingo, uncle chips]
+      retailers:
+        bigbasket: "/pc/snacks-branded-foods/chips-crisps/"
+        blinkit: "/c/chips-crisps-nachos/"
+        zepto: "/categories/chips-wafers"
+        
+    namkeen_mixtures:
+      display_name: "Namkeen & Mixtures"
+      keywords: [namkeen, mixture, bhujia, sev, chivda]
+      popular_brands: [haldiram, bikaji, balaji]
+      retailers:
+        bigbasket: "/pc/snacks-branded-foods/namkeen-snacks/"
+        blinkit: "/c/namkeen-snacks/"
+        zepto: "/categories/namkeen"
+        
+    biscuits_cookies:
+      display_name: "Biscuits & Cookies"
+      keywords: [biscuits, cookies, cream biscuits, crackers]
+      popular_brands: [parle, britannia, sunfeast, oreo]
+      retailers:
+        bigbasket: "/pc/snacks-branded-foods/biscuits-cookies/"
+        blinkit: "/c/biscuits-cookies/"
+        zepto: "/categories/biscuits-chocolates"
+
+  beverages:
+    soft_drinks:
+      display_name: "Soft Drinks"
+      keywords: [cola, soda, aerated drinks, carbonated]
+      popular_brands: [coca cola, pepsi, thums up, sprite]
+      retailers:
+        bigbasket: "/pc/beverages/soft-drinks/"
+        blinkit: "/c/soft-drinks/"
+        zepto: "/categories/soft-drinks"
+        
+    juices:
+      display_name: "Juices & Nectars"
+      keywords: [juice, fruit juice, nectar, squash]
+      popular_brands: [real, tropicana, minute maid, maaza]
+      retailers:
+        bigbasket: "/pc/beverages/juices/"
+        blinkit: "/c/juices-drinks/"
+        zepto: "/categories/juices"
+
+  dairy:
+    milk_products:
+      display_name: "Milk Products"
+      keywords: [milk, toned milk, full cream, skimmed]
+      popular_brands: [amul, mother dairy, nestle]
+      retailers:
+        bigbasket: "/pc/dairy/milk/"
+        blinkit: "/c/milk/"
+        zepto: "/categories/milk-products"
+        
+    cheese_paneer:
+      display_name: "Cheese & Paneer"
+      keywords: [cheese, paneer, cottage cheese, mozzarella]
+      popular_brands: [amul, britannia, go cheese]
+      retailers:
+        bigbasket: "/pc/dairy/cheese/"
+        blinkit: "/c/cheese-paneer/"
+        zepto: "/categories/cheese-paneer"
+
+  instant_foods:
+    noodles_pasta:
+      display_name: "Noodles & Pasta"
+      keywords: [noodles, instant noodles, pasta, macaroni]
+      popular_brands: [maggi, top ramen, yippee, wai wai]
+      retailers:
+        bigbasket: "/pc/snacks-branded-foods/noodles-pasta-vermicelli/"
+        blinkit: "/c/noodles-pasta/"
+        zepto: "/categories/instant-noodles"
+        
+    ready_to_eat:
+      display_name: "Ready to Eat Meals"
+      keywords: [ready to eat, instant meal, heat and eat]
+      popular_brands: [mtr, haldiram, gits, tasty bite]
+      retailers:
+        bigbasket: "/pc/ready-to-eat-cook/"
+        blinkit: "/c/ready-to-eat/"
+        zepto: "/categories/ready-to-eat"
+
+  staples:
+    atta_flours:
+      display_name: "Atta & Flours"
+      keywords: [atta, wheat flour, maida, besan, rice flour]
+      popular_brands: [aashirvaad, fortune, rajdhani, pillsbury]
+      retailers:
+        bigbasket: "/pc/staples/atta-flours/"
+        blinkit: "/c/atta-rice-dal/"
+        zepto: "/categories/atta-rice-dal"
+        
+    cooking_oils:
+      display_name: "Cooking Oils"
+      keywords: [oil, cooking oil, sunflower oil, mustard oil]
+      popular_brands: [fortune, saffola, sundrop, dhara]
+      retailers:
+        bigbasket: "/pc/staples/edible-oils-ghee/"
+        blinkit: "/c/edible-oils/"
+        zepto: "/categories/cooking-oils"
+
+# Special categories for monitoring
+special_categories:
+  new_launches:
+    display_name: "New Launches"
+    retailers:
+      bigbasket: "/cl/new-products/"
+      blinkit: "/c/new-arrivals/"
+      
+  trending:
+    display_name: "Trending Now"
+    retailers:
+      bigbasket: "/cl/trending-products/"
+      blinkit: "/c/trending/"
+      
+  offers:
+    display_name: "Special Offers"
+    retailers:
+      bigbasket: "/cl/offers/"
+      blinkit: "/c/deals-of-the-day/"

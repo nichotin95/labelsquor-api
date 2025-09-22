@@ -1,0 +1,16 @@
+# Machine Learning requirements
+# These are only needed if you're running the AI/ML components
+
+-r base.txt
+
+# AI/ML frameworks
+google-generativeai==0.8.5
+sentence-transformers==5.1.0
+torch==2.8.0
+transformers==4.56.1
+scikit-learn==1.7.2
+numpy==2.3.3
+pillow==11.3.0
+
+# Optional vector DB support
+# pgvector==0.2.5  # Uncomment if using PostgreSQL vector extensions

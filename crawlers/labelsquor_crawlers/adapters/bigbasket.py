@@ -159,6 +159,90 @@ class BigBasketAdapter(RetailerAdapter):
         
         return data
     
+    def extract_images(self, response) -> List[str]:
+        """Extract ALL product images from BigBasket - DON'T FILTER!"""
+        images = []
+        
+        # Method 1: Product image gallery (most common)
+        # BigBasket uses different selectors across pages
+        gallery_selectors = [
+            '.pd-image img::attr(src)',
+            '.pd-image img::attr(data-src)',
+            '.product-image img::attr(src)',
+            'div[class*="product-image"] img::attr(src)',
+            '#product-images img::attr(src)',
+            '.item-img img::attr(src)'
+        ]
+        
+        for selector in gallery_selectors:
+            found = response.css(selector).getall()
+            images.extend(found)
+        
+        # Method 2: Thumbnail images (often has back/side views)
+        thumbnail_selectors = [
+            '.thumbnail img::attr(src)',
+            '.product-thumbs img::attr(src)',
+            '.pd-thumbnail img::attr(src)',
+            'div[class*="thumbnail"] img::attr(src)'
+        ]
+        
+        for selector in thumbnail_selectors:
+            found = response.css(selector).getall()
+            images.extend(found)
+        
+        # Method 3: From JavaScript data
+        # BigBasket often loads images via JS
+        script_selectors = [
+            'script:contains("productImages")',
+            'script:contains("imageUrls")',
+            'script:contains("gallery")'
+        ]
+        
+        for selector in script_selectors:
+            scripts = response.css(f'{selector}::text').getall()
+            for script in scripts:
+                # Extract URLs from JavaScript
+                import re
+                # Look for image URLs in JSON arrays
+                urls = re.findall(r'"(https?://[^"]+\.(?:jpg|jpeg|png|webp)[^"]*)"', script)
+                images.extend(urls)
+                # Also look for paths that need domain
+                paths = re.findall(r'"/media/[^"]+\.(?:jpg|jpeg|png|webp)[^"]*"', script)
+                images.extend([p.strip('"') for p in paths])
+        
+        # Method 4: From meta tags (sometimes has main image)
+        meta_images = response.css('meta[property="og:image"]::attr(content)').getall()
+        images.extend(meta_images)
+        
+        # Normalize all URLs
+        normalized = []
+        seen = set()
+        
+        for img in images:
+            if not img:
+                continue
+                
+            # Clean the URL
+            img = img.strip()
+            
+            # Convert to full URL
+            if img.startswith('//'):
+                img = 'https:' + img
+            elif img.startswith('/'):
+                # BigBasket uses bbassets.com CDN
+                img = 'https://www.bbassets.com' + img
+            elif not img.startswith('http'):
+                # Relative URL
+                img = 'https://www.bbassets.com/media/' + img
+                
+            # Only add if not seen
+            if img not in seen and ('.jpg' in img or '.jpeg' in img or '.png' in img or '.webp' in img):
+                seen.add(img)
+                normalized.append(img)
+        
+        # IMPORTANT: Return ALL images - back/side views have ingredients!
+        return normalized
+    
     def _extract_detailed_info(self, response, data: Dict[str, Any]):
         """Extract detailed product information from tabs/sections"""
         # BigBasket often has tabbed content

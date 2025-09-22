@@ -1,43 +1,76 @@
 """
 API Schemas (Pydantic models for request/response)
 """
-from .brand import BrandCreate, BrandUpdate, BrandRead, BrandReadWithProducts
-from .product import (
-    ProductCreate, ProductUpdate, ProductRead, ProductReadDetailed,
-    ProductIdentifierCreate, ProductIdentifierRead,
-    ProductVersionRead
-)
+
+from .brand import BrandCreate, BrandRead, BrandReadWithProducts, BrandUpdate
 from .category import (
-    CategoryCreate, CategoryUpdate, CategoryRead, CategoryTree,
-    ProductCategoryMapCreate, ProductCategoryMapRead
+    CategoryCreate,
+    CategoryRead,
+    CategoryTree,
+    CategoryUpdate,
+    ProductCategoryMapCreate,
+    ProductCategoryMapRead,
 )
-from .facts import (
-    IngredientsCreate, IngredientsRead,
-    NutritionCreate, NutritionRead,
-    AllergensCreate, AllergensRead,
-    ClaimsCreate, ClaimsRead,
-    CertificationCreate, CertificationRead
-)
-from .score import SquorScoreRead, SquorComponentRead
 from .common import PaginationParams, SearchParams
+from .facts import (
+    AllergensCreate,
+    AllergensRead,
+    CertificationCreate,
+    CertificationRead,
+    ClaimsCreate,
+    ClaimsRead,
+    IngredientsCreate,
+    IngredientsRead,
+    NutritionCreate,
+    NutritionRead,
+)
+from .product import (
+    ProductCreate,
+    ProductIdentifierCreate,
+    ProductIdentifierRead,
+    ProductRead,
+    ProductReadDetailed,
+    ProductUpdate,
+    ProductVersionRead,
+)
+from .score import SquorComponentRead, SquorScoreRead
 
 __all__ = [
     # Brand
-    "BrandCreate", "BrandUpdate", "BrandRead", "BrandReadWithProducts",
+    "BrandCreate",
+    "BrandUpdate",
+    "BrandRead",
+    "BrandReadWithProducts",
     # Product
-    "ProductCreate", "ProductUpdate", "ProductRead", "ProductReadDetailed",
-    "ProductIdentifierCreate", "ProductIdentifierRead", "ProductVersionRead",
+    "ProductCreate",
+    "ProductUpdate",
+    "ProductRead",
+    "ProductReadDetailed",
+    "ProductIdentifierCreate",
+    "ProductIdentifierRead",
+    "ProductVersionRead",
     # Category
-    "CategoryCreate", "CategoryUpdate", "CategoryRead", "CategoryTree",
-    "ProductCategoryMapCreate", "ProductCategoryMapRead",
+    "CategoryCreate",
+    "CategoryUpdate",
+    "CategoryRead",
+    "CategoryTree",
+    "ProductCategoryMapCreate",
+    "ProductCategoryMapRead",
     # Facts
-    "IngredientsCreate", "IngredientsRead",
-    "NutritionCreate", "NutritionRead",
-    "AllergensCreate", "AllergensRead",
-    "ClaimsCreate", "ClaimsRead",
-    "CertificationCreate", "CertificationRead",
+    "IngredientsCreate",
+    "IngredientsRead",
+    "NutritionCreate",
+    "NutritionRead",
+    "AllergensCreate",
+    "AllergensRead",
+    "ClaimsCreate",
+    "ClaimsRead",
+    "CertificationCreate",
+    "CertificationRead",
     # Score
-    "SquorScoreRead", "SquorComponentRead",
+    "SquorScoreRead",
+    "SquorComponentRead",
     # Common
-    "PaginationParams", "SearchParams"
+    "PaginationParams",
+    "SearchParams",
 ]

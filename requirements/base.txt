@@ -1,0 +1,71 @@
+# Base requirements for LabelSquor API
+# Core dependencies needed for the API to run
+
+# FastAPI and server
+fastapi==0.116.1
+uvicorn[standard]==0.35.0
+pydantic==2.11.9
+pydantic-settings==2.10.1
+python-multipart==0.0.20
+orjson==3.11.3
+
+# Database
+sqlmodel==0.0.24
+sqlalchemy==2.0.43
+asyncpg==0.30.0
+psycopg2-binary==2.9.10
+alembic==1.13.1  # Added for migrations
+tenacity==9.1.2  # For retry logic
+greenlet==3.2.4  # Required for async SQLAlchemy
+
+# Authentication & Security
+python-jose[cryptography]==3.5.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.3.0
+
+# HTTP clients
+httpx==0.28.1
+aiohttp==3.9.5
+
+# Caching
+redis==5.0.1
+aiocache==0.12.3
+fastapi-cache2==0.2.2
+
+# Monitoring & Logging
+prometheus-fastapi-instrumentator==7.1.0
+sentry-sdk[fastapi]==2.37.1
+loguru==0.7.3
+python-json-logger==3.3.0
+
+# Middleware & Utils
+slowapi==0.1.9
+starlette-context==0.4.0
+limits==5.5.0
+
+# Configuration
+python-dotenv==1.1.1
+pyyaml==6.0.2
+
+# Date/time handling
+pendulum==3.1.0
+
+# Data validation
+email-validator==2.1.1
+
+# Image processing
+Pillow==11.0.0
+
+# Web scraping (needed for crawler service)
+beautifulsoup4==4.13.5
+lxml==6.0.1
+requests==2.32.5
+
+# AI/ML (needed for AI pipeline service)
+google-generativeai==0.8.5
+sentence-transformers==5.1.0
+
+# Testing
+pytest==8.3.4
+pytest-asyncio==0.25.0
+httpx==0.28.1

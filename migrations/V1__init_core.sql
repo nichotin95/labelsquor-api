@@ -1,6 +1,9 @@
 -- V1__init_core.sql
 -- Core entities, sources, versions, facts (ingredients example), scores (Squor), ops, embeddings.
 
+-- Enable pgvector extension for embeddings (optional - comment out if not needed)
+-- CREATE EXTENSION IF NOT EXISTS vector;
+
 -- 1) Brand
 create table if not exists brand (
   brand_id uuid primary key,
@@ -242,7 +245,9 @@ create table if not exists issue (
   resolved_at timestamptz
 );
 
--- 15) Embeddings
+-- 15) Embeddings (Optional - requires pgvector extension)
+-- Uncomment below if you need embeddings support and have pgvector enabled
+/*
 create table if not exists embedding (
   embedding_id uuid primary key,
   entity_type text not null,
@@ -252,3 +257,4 @@ create table if not exists embedding (
   vector vector(1536),
   created_at timestamptz default now()
 );
+*/

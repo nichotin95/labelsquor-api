@@ -1,118 +1,81 @@
 """
-Application configuration using Pydantic Settings V2
+Application configuration using Pydantic settings
 """
-from typing import Optional, List, Literal, Set
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import AnyHttpUrl, PostgresDsn, Field, field_validator
+
+import os
 from functools import lru_cache
-import secrets
+from typing import List, Optional
+
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    # API Configuration
+    """Application settings from environment variables"""
+
+    # Application
+    app_name: str = "LabelSquor API"
+    environment: str = "development"
+    debug: bool = True
+    api_v1_prefix: str = "/api/v1"
+
+    # Database
+    database_url: str = os.getenv(
+        "DATABASE_URL", "postgresql://postgres:Z9f%2BhP%24E8-r%23DdU@db.snjmkslhsyesshixytfw.supabase.co:5432/postgres"
+    )
+    database_pool_url: Optional[str] = os.getenv("DATABASE_POOL_URL")
+    db_echo: bool = False
+
+    # Connection pool settings
+    db_pool_size: int = 20
+    db_max_overflow: int = 0
+    db_pool_pre_ping: bool = True
+
+    # Redis Cache
+    redis_url: Optional[str] = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+    cache_ttl: int = 300  # 5 minutes
+
+    # Security
+    secret_key: str = os.getenv("SECRET_KEY", "dev-secret-key")
+    algorithm: str = "HS256"
+    access_token_expire_minutes: int = 30
+
+    # CORS
+    cors_origins: List[str] = ["http://localhost:3000", "http://localhost:5173"]
+
+    # Add missing config attributes for main.py
     PROJECT_NAME: str = "LabelSquor API"
     VERSION: str = "1.0.0"
+    ENVIRONMENT: str = "development"
     API_V1_STR: str = "/api/v1"
-    DEBUG: bool = False
-    ENVIRONMENT: Literal["development", "staging", "production"] = "development"
-    
-    # Server
+    DEBUG: bool = True
     HOST: str = "0.0.0.0"
     PORT: int = 8000
     WORKERS: int = 1
-    
-    # CORS
-    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
-    
-    # Database
-    DATABASE_URL: PostgresDsn
-    DB_POOL_SIZE: int = 5
-    DB_MAX_OVERFLOW: int = 10
-    DB_POOL_PRE_PING: bool = True
-    DB_ECHO: bool = False
-    
-    # Supabase
-    SUPABASE_URL: AnyHttpUrl
-    SUPABASE_ANON_KEY: str
-    SUPABASE_SERVICE_ROLE_KEY: Optional[str] = None
-    
-    # Security
-    SECRET_KEY: str = Field(default_factory=lambda: secrets.token_urlsafe(32))
-    ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
-    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
-    
-    # Rate Limiting
-    RATE_LIMIT_ENABLED: bool = True
-    RATE_LIMIT_REQUESTS: int = 100
-    RATE_LIMIT_PERIOD: int = 60  # seconds
-    
-    # External Services
-    GOOGLE_AI_STUDIO_KEY: Optional[str] = None
-    OPENAI_API_KEY: Optional[str] = None
-    
-    # Storage
-    STORAGE_TYPE: Literal["s3", "supabase", "local"] = "supabase"
-    S3_BUCKET_NAME: Optional[str] = None
-    S3_ACCESS_KEY: Optional[str] = None
-    S3_SECRET_KEY: Optional[str] = None
-    S3_REGION: Optional[str] = "us-east-1"
-    LOCAL_STORAGE_PATH: str = "./storage"
-    
-    # Redis (for caching)
-    REDIS_URL: Optional[str] = None
-    CACHE_TTL: int = 300  # 5 minutes default
-    
-    # Feature Flags
-    ENABLE_OCR: bool = False
-    ENABLE_BARCODE_SCAN: bool = False
-    ENABLE_GRAPHQL: bool = False
-    ENABLE_WEBHOOKS: bool = False
-    
-    # Observability
     SENTRY_DSN: Optional[str] = None
-    LOG_LEVEL: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
-    LOG_FORMAT: Literal["json", "pretty"] = "json"
-    ENABLE_OPENTELEMETRY: bool = False
-    OTLP_ENDPOINT: Optional[str] = None
-    
-    # Task Queue
-    TASK_QUEUE_TYPE: Literal["celery", "dramatiq", "none"] = "none"
-    BROKER_URL: Optional[str] = None
-    
-    @field_validator("BACKEND_CORS_ORIGINS", mode="before")
-    @classmethod
-    def assemble_cors_origins(cls, v: str | List[str]) -> List[str] | str:
-        if isinstance(v, str) and not v.startswith("["):
-            return [i.strip() for i in v.split(",")]
-        elif isinstance(v, (list, str)):
-            return v
-        raise ValueError(v)
-    
-    @field_validator("DATABASE_URL", mode="after")
-    def validate_database_url(cls, v: PostgresDsn) -> PostgresDsn:
-        """Ensure DATABASE_URL is properly formatted"""
-        return v
-    
-    @property
-    def async_database_url(self) -> str:
-        """Convert sync PostgreSQL URL to async"""
-        return str(self.DATABASE_URL).replace("postgresql://", "postgresql+asyncpg://")
-    
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        case_sensitive=True,
-        extra="ignore"  # Ignore extra env vars
-    )
+    BACKEND_CORS_ORIGINS: List[str] = ["*"]
+    ENABLE_GRAPHQL: bool = False
+
+    # External APIs
+    google_api_key: Optional[str] = os.getenv("GOOGLE_API_KEY")
+    supabase_anon_key: Optional[str] = os.getenv("SUPABASE_ANON_KEY")
+
+    # Logging
+    log_level: str = "INFO"
+    log_format: str = "json"
+
+    # Pagination
+    default_page_size: int = 20
+    max_page_size: int = 100
+
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
+        case_sensitive = False
 
 
 @lru_cache()
 def get_settings() -> Settings:
-    """
-    Create settings instance with caching.
-    This ensures we only load environment variables once.
-    """
+    """Get cached settings instance"""
     return Settings()
 
 

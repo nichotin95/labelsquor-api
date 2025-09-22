@@ -1,10 +1,12 @@
 """
 Brand model
 """
-from typing import Optional, List, TYPE_CHECKING
+
 from datetime import datetime
-from sqlmodel import Field, SQLModel, Relationship
+from typing import TYPE_CHECKING, List, Optional
 from uuid import UUID, uuid4
+
+from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
     from .product import Product
@@ -12,6 +14,7 @@ if TYPE_CHECKING:
 
 class BrandBase(SQLModel):
     """Base brand attributes for request/response schemas"""
+
     name: str
     normalized_name: str
     owner_company: Optional[str] = None
@@ -21,11 +24,12 @@ class BrandBase(SQLModel):
 
 class Brand(BrandBase, table=True):
     """Brand database model"""
+
     __tablename__ = "brand"
-    
+
     brand_id: UUID = Field(default_factory=uuid4, primary_key=True)
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
-    
+
     # Relationships
     products: List["Product"] = Relationship(back_populates="brand")

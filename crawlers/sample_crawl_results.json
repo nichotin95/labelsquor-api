@@ -1,0 +1,2837 @@
+[
+  {
+    "id": "40183056",
+    "desc": "Nutri-Licious Masala Veg Atta Instant Noodles",
+    "sku_max_quantity": 0,
+    "pack_desc": "(6x72.5 g)",
+    "hide_default_pack_size_widget": false,
+    "sort_index_pos": 0,
+    "cart_count": 0,
+    "is_best_value": false,
+    "sku_deck_type": "old_deck",
+    "w": "435 g",
+    "absolute_url": "/pd/40183056/maggi-nutri-licious-veg-atta-masala-noodles-435-g/",
+    "usp": "Made with Atta, Source of Protein, Fibre & Iron,",
+    "requested_sku_id": "40183056",
+    "availability": {
+      "avail_status": "001",
+      "display_mrp": true,
+      "display_sp": true,
+      "not_for_sale": false,
+      "button": "Add",
+      "show_express": false
+    },
+    "pricing": {
+      "available_offer_type": "offer",
+      "offer_badge_text": "",
+      "emi_offers": {},
+      "bank_offers": {},
+      "discount": {
+        "mrp": "168",
+        "mrp_per_pack": null,
+        "d_text": "11% OFF",
+        "d_avail": "true",
+        "prim_price": {
+          "sp": "150",
+          "sp_per_pack": null,
+          "icon": {
+            "base_url": null,
+            "image": null,
+            "format": null
+          },
+          "desc": "",
+          "base_price": "0.34",
+          "base_unit": "g"
+        },
+        "sec_price": {
+          "sp": null,
+          "icon": null,
+          "desc": null,
+          "background": null
+        },
+        "offer_entry_text": "Har Din Sasta!",
+        "camp_detail": {
+          "c": [
+            3185366
+          ],
+          "c_f": 2.56,
+          "d_t": "percent",
+          "d_v": 10.71,
+          "dual_pricing": true,
+          "m_f": 0,
+          "narq": 4,
+          "r_c": [],
+          "v_f": 15.44
+        },
+        "subscription_price": "150",
+        "offer_available": "true"
+      },
+      "promo": null,
+      "subscribe": {
+        "desc": null,
+        "desc_label": null,
+        "subs_c": [],
+        "subs_sp": null
+      },
+      "offer": {
+        "arrow_image": "https://www.bbassets.com/media/uploads/arrow_image_G.png",
+        "background": {
+          "direction": "LEFT_RIGHT",
+          "gradient": [
+            {
+              "a": 1,
+              "b": 255,
+              "g": 255,
+              "r": 255
+            },
+            {
+              "a": 1,
+              "b": 204,
+              "g": 241,
+              "r": 228
+            }
+          ]
+        },
+        "background_border": {
+          "direction": "LEFT_RIGHT",
+          "gradient": [
+            {
+              "a": 1,
+              "b": 102,
+              "g": 213,
+              "r": 173
+            },
+            {
+              "a": 1,
+              "b": 51,
+              "g": 199,
+              "r": 145
+            }
+          ]
+        },
+        "campaign_type": "",
+        "campaign_type_icon": null,
+        "campaign_type_slug": "",
+        "entry_achieved_image": "https://www.bbassets.com/media/uploads/super_saver_tick_green.json",
+        "offer_available": "true",
+        "offer_ent_txt": "Har Din Sasta!",
+        "offer_entry_text": "Har Din Sasta!",
+        "offer_logo": "",
+        "offer_sp": 150,
+        "offer_type": "discount",
+        "progress_background": {
+          "direction": "LEFT_RIGHT",
+          "gradient": [
+            {
+              "a": 1,
+              "b": 255,
+              "g": 255,
+              "r": 255
+            },
+            {
+              "a": 1,
+              "b": 102,
+              "g": 213,
+              "r": 173
+            }
+          ]
+        },
+        "text": "Har Din Sasta!",
+        "text_color": "#476F00"
+      }
+    },
+    "variant_info": [],
+    "sku_badge": null,
+    "usps": [],
+    "images": [
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40183056_12-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40183056_12-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40183056_12-maggi-nutri-licious-veg-atta-masala-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40183056-2_14-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40183056-2_14-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40183056-2_14-maggi-nutri-licious-veg-atta-masala-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40183056-3_14-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40183056-3_14-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40183056-3_14-maggi-nutri-licious-veg-atta-masala-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40183056-4_13-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40183056-4_13-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40183056-4_13-maggi-nutri-licious-veg-atta-masala-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40183056-5_13-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40183056-5_13-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40183056-5_13-maggi-nutri-licious-veg-atta-masala-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40183056-6_13-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40183056-6_13-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40183056-6_13-maggi-nutri-licious-veg-atta-masala-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40183056-7_6-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40183056-7_6-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40183056-7_6-maggi-nutri-licious-veg-atta-masala-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40183056-8_4-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40183056-8_4-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40183056-8_4-maggi-nutri-licious-veg-atta-masala-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40183056-9_4-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40183056-9_4-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40183056-9_4-maggi-nutri-licious-veg-atta-masala-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40183056-10_3-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40183056-10_3-maggi-nutri-licious-veg-atta-masala-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40183056-10_3-maggi-nutri-licious-veg-atta-masala-noodles.jpg"
+      }
+    ],
+    "subscription_info": null,
+    "variable_weight": null,
+    "brand": {
+      "name": "Maggi",
+      "slug": "maggi",
+      "url": "/pb/maggi/"
+    },
+    "theme": {},
+    "category": {
+      "tlc_name": "Snacks & Branded Foods",
+      "tlc_slug": "snacks-branded-foods",
+      "mlc_name": "Noodle, Pasta, Vermicelli",
+      "mlc_slug": "noodle-pasta-vermicelli",
+      "mlc_id": 1629,
+      "llc_name": "Instant Noodles",
+      "llc_slug": "type=pc&slug=instant-noodles",
+      "llc_id": 762
+    },
+    "additional_attr": {
+      "info": [
+        {
+          "type": "food_type",
+          "label": "veg",
+          "sub_type": "veg"
+        },
+        {
+          "type": "pl_top_right_sku_deck",
+          "label": "AD",
+          "image_url": "",
+          "sub_type": "sponsored"
+        },
+        {
+          "type": "osmos",
+          "position": 1,
+          "label": "Sponsored",
+          "image_url": "sponsored.png",
+          "sub_type": "annotation",
+          "ad_id": "24793fa550c6fd8d9d0ce204d4ebe6862662f99c6823a305dbc1afaf53ce072000628e53cf9da42a5836abdb1e423dd1039240436298e52c5c106bcb08945c964ca71951407d27b6e9a70c4155a538dc5e88ff5ed9066a08b4485c4d2435e83a26f69d77da5e95a3dc09e70a8ab8b27f12a95cc8f3a2b1c78608fa433057673f2fe1c6afe49e407670b9e79d7f6d8550@~v1"
+        }
+      ]
+    },
+    "combo": null,
+    "children": [
+      {
+        "id": "40113736",
+        "desc": "Nutri-Licious Masala Veg Atta Instant Noodles",
+        "sku_max_quantity": 0,
+        "pack_desc": "",
+        "hide_default_pack_size_widget": false,
+        "sort_index_pos": 0,
+        "cart_count": 0,
+        "is_best_value": false,
+        "sku_deck_type": "old_deck",
+        "w": "72.5 g",
+        "absolute_url": "/pd/40113736/maggi-nutri-licious-masala-veg-atta-noodles-725-g-pouch/",
+        "usp": "Made with Atta, Source of Protein, Fibre & Iron",
+        "requested_sku_id": "40183056",
+        "availability": {
+          "avail_status": "001",
+          "display_mrp": true,
+          "display_sp": true,
+          "not_for_sale": false,
+          "button": "Add",
+          "show_express": false
+        },
+        "pricing": {
+          "available_offer_type": "offer",
+          "offer_badge_text": "",
+          "emi_offers": {},
+          "bank_offers": {},
+          "discount": {
+            "mrp": "30",
+            "mrp_per_pack": null,
+            "d_text": "",
+            "d_avail": "false",
+            "prim_price": {
+              "sp": "30",
+              "sp_per_pack": null,
+              "icon": {
+                "base_url": null,
+                "image": null,
+                "format": null
+              },
+              "desc": "",
+              "base_price": "0.41",
+              "base_unit": "g"
+            },
+            "sec_price": {
+              "sp": null,
+              "icon": null,
+              "desc": null,
+              "background": null
+            },
+            "offer_entry_text": "",
+            "camp_detail": {
+              "c": [],
+              "c_f": 0,
+              "d_t": "",
+              "d_v": 0,
+              "dual_pricing": false,
+              "m_f": 0,
+              "narq": 9999999,
+              "r_c": [],
+              "v_f": 0
+            },
+            "subscription_price": "30",
+            "offer_available": "false"
+          },
+          "promo": null,
+          "subscribe": {
+            "desc": null,
+            "desc_label": null,
+            "subs_c": [],
+            "subs_sp": null
+          },
+          "offer": {}
+        },
+        "variant_info": [],
+        "sku_badge": null,
+        "usps": [],
+        "images": [
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40113736_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40113736_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40113736_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40113736-2_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40113736-2_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40113736-2_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40113736-3_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40113736-3_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40113736-3_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40113736-4_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40113736-4_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40113736-4_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40113736-5_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40113736-5_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40113736-5_17-maggi-nutri-licious-masala-veg-atta-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40113736-6_15-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40113736-6_15-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40113736-6_15-maggi-nutri-licious-masala-veg-atta-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40113736-7_8-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40113736-7_8-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40113736-7_8-maggi-nutri-licious-masala-veg-atta-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40113736-8_7-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40113736-8_7-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40113736-8_7-maggi-nutri-licious-masala-veg-atta-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40113736-9_2-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40113736-9_2-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40113736-9_2-maggi-nutri-licious-masala-veg-atta-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40113736-10_1-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40113736-10_1-maggi-nutri-licious-masala-veg-atta-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40113736-10_1-maggi-nutri-licious-masala-veg-atta-noodles.jpg"
+          }
+        ],
+        "subscription_info": null,
+        "variable_weight": null,
+        "brand": {
+          "name": "Maggi",
+          "slug": "maggi",
+          "url": "/pb/maggi/"
+        },
+        "theme": {},
+        "category": {
+          "tlc_name": "Snacks & Branded Foods",
+          "tlc_slug": "snacks-branded-foods",
+          "mlc_name": "Noodle, Pasta, Vermicelli",
+          "mlc_slug": "noodle-pasta-vermicelli",
+          "mlc_id": 1629,
+          "llc_name": "Instant Noodles",
+          "llc_slug": "type=pc&slug=instant-noodles",
+          "llc_id": 762
+        },
+        "additional_attr": {
+          "info": [
+            {
+              "type": "food_type",
+              "label": "veg",
+              "sub_type": "veg"
+            },
+            {
+              "type": "pl_top_right_sku_deck",
+              "label": "AD",
+              "image_url": "",
+              "sub_type": "sponsored"
+            },
+            {
+              "type": "osmos",
+              "position": 1,
+              "label": "Sponsored",
+              "image_url": "sponsored.png",
+              "sub_type": "annotation",
+              "ad_id": "24793fa550c6fd8d9d0ce204d4ebe6862662f99c6823a305dbc1afaf53ce072000628e53cf9da42a5836abdb1e423dd1039240436298e52c5c106bcb08945c964ca71951407d27b6e9a70c4155a538dc5e88ff5ed9066a08b4485c4d2435e83a26f69d77da5e95a3dc09e70a8ab8b27f12a95cc8f3a2b1c78608fa433057673f2fe1c6afe49e407670b9e79d7f6d8550@~v1"
+            }
+          ]
+        },
+        "combo": null,
+        "rating_info": {
+          "avg_rating": "4",
+          "rating_count": 15330,
+          "review_count": 102,
+          "sku_id": 40113736
+        },
+        "visibility": {
+          "path_id": 10864,
+          "fc_id": 1820,
+          "sa_id": 19226,
+          "supply_chain_ecs": null
+        },
+        "video_links": [],
+        "parent_info": {
+          "id": 366493,
+          "parent_product_id": null,
+          "child_product_id": null,
+          "order": 0,
+          "parent_id": 40113736,
+          "child_id": 40113736,
+          "is_default": 1,
+          "type": 1,
+          "created_by_id": 16946,
+          "updated_by_id": 16946,
+          "created_on": "2022-06-28 18:05:46",
+          "updated_on": "2022-06-28 18:05:46"
+        },
+        "high_affinity": [],
+        "inv_info": {
+          "skus": [
+            {
+              "id": 40113736,
+              "qty": 1,
+              "fc_id": 1820
+            }
+          ]
+        },
+        "prescription_only": false,
+        "prescription_or_virtual_consult": false,
+        "is_tobacco": false
+      },
+      {
+        "id": "266096",
+        "desc": "Nutri-Licious Masala Veg Atta Instant Noodles",
+        "sku_max_quantity": 0,
+        "pack_desc": "(4x72.5 g)",
+        "hide_default_pack_size_widget": false,
+        "sort_index_pos": 0,
+        "cart_count": 0,
+        "is_best_value": false,
+        "sku_deck_type": "old_deck",
+        "w": "290 g",
+        "absolute_url": "/pd/266096/maggi-nutri-licious-masala-veg-atta-noodles-pouch-290-g-pouch/",
+        "usp": "Made with Atta, Source of Protein, Fibre & Iron,",
+        "requested_sku_id": "40183056",
+        "availability": {
+          "avail_status": "001",
+          "display_mrp": true,
+          "display_sp": true,
+          "not_for_sale": false,
+          "button": "Add",
+          "show_express": false
+        },
+        "pricing": {
+          "available_offer_type": "offer",
+          "offer_badge_text": "",
+          "emi_offers": {},
+          "bank_offers": {},
+          "discount": {
+            "mrp": "112",
+            "mrp_per_pack": null,
+            "d_text": "",
+            "d_avail": "false",
+            "prim_price": {
+              "sp": "112",
+              "sp_per_pack": null,
+              "icon": {
+                "base_url": null,
+                "image": null,
+                "format": null
+              },
+              "desc": "",
+              "base_price": "0.38",
+              "base_unit": "g"
+            },
+            "sec_price": {
+              "sp": null,
+              "icon": null,
+              "desc": null,
+              "background": null
+            },
+            "offer_entry_text": "",
+            "camp_detail": {
+              "c": [],
+              "c_f": 0,
+              "d_t": "",
+              "d_v": 0,
+              "dual_pricing": false,
+              "m_f": 0,
+              "narq": 9999999,
+              "r_c": [],
+              "v_f": 0
+            },
+            "subscription_price": "112",
+            "offer_available": "false"
+          },
+          "promo": null,
+          "subscribe": {
+            "desc": null,
+            "desc_label": null,
+            "subs_c": [],
+            "subs_sp": null
+          },
+          "offer": {}
+        },
+        "variant_info": [],
+        "sku_badge": null,
+        "usps": [],
+        "images": [
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266096_36-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266096_36-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266096_36-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266096-2_26-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266096-2_26-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266096-2_26-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266096-3_24-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266096-3_24-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266096-3_24-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266096-4_23-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266096-4_23-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266096-4_23-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266096-5_21-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266096-5_21-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266096-5_21-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266096-6_20-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266096-6_20-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266096-6_20-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266096-7_13-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266096-7_13-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266096-7_13-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266096-8_5-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266096-8_5-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266096-8_5-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266096-9_5-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266096-9_5-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266096-9_5-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266096-10_3-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266096-10_3-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266096-10_3-maggi-nutri-licious-masala-veg-atta-noodles-pouch.jpg"
+          }
+        ],
+        "subscription_info": null,
+        "variable_weight": null,
+        "brand": {
+          "name": "Maggi",
+          "slug": "maggi",
+          "url": "/pb/maggi/"
+        },
+        "theme": {},
+        "category": {
+          "tlc_name": "Snacks & Branded Foods",
+          "tlc_slug": "snacks-branded-foods",
+          "mlc_name": "Noodle, Pasta, Vermicelli",
+          "mlc_slug": "noodle-pasta-vermicelli",
+          "mlc_id": 1629,
+          "llc_name": "Instant Noodles",
+          "llc_slug": "type=pc&slug=instant-noodles",
+          "llc_id": 762
+        },
+        "additional_attr": {
+          "info": [
+            {
+              "type": "food_type",
+              "label": "veg",
+              "sub_type": "veg"
+            },
+            {
+              "type": "pl_top_right_sku_deck",
+              "label": "AD",
+              "image_url": "",
+              "sub_type": "sponsored"
+            },
+            {
+              "type": "osmos",
+              "position": 1,
+              "label": "Sponsored",
+              "image_url": "sponsored.png",
+              "sub_type": "annotation",
+              "ad_id": "24793fa550c6fd8d9d0ce204d4ebe6862662f99c6823a305dbc1afaf53ce072000628e53cf9da42a5836abdb1e423dd1039240436298e52c5c106bcb08945c964ca71951407d27b6e9a70c4155a538dc5e88ff5ed9066a08b4485c4d2435e83a26f69d77da5e95a3dc09e70a8ab8b27f12a95cc8f3a2b1c78608fa433057673f2fe1c6afe49e407670b9e79d7f6d8550@~v1"
+            }
+          ]
+        },
+        "combo": null,
+        "rating_info": {
+          "avg_rating": "4",
+          "rating_count": 15330,
+          "review_count": 102,
+          "sku_id": 40113736
+        },
+        "visibility": {
+          "path_id": 10864,
+          "fc_id": 1820,
+          "sa_id": 19226,
+          "supply_chain_ecs": null
+        },
+        "video_links": [],
+        "parent_info": {
+          "id": 366494,
+          "parent_product_id": null,
+          "child_product_id": null,
+          "order": 1,
+          "parent_id": 40113736,
+          "child_id": 266096,
+          "is_default": 0,
+          "type": 1,
+          "created_by_id": 16946,
+          "updated_by_id": 16946,
+          "created_on": "2022-06-28 18:05:46",
+          "updated_on": "2022-06-28 18:05:46"
+        },
+        "high_affinity": [],
+        "inv_info": {
+          "skus": [
+            {
+              "id": 266096,
+              "qty": 1,
+              "fc_id": 1820
+            }
+          ]
+        },
+        "prescription_only": false,
+        "prescription_or_virtual_consult": false,
+        "is_tobacco": false
+      }
+    ],
+    "rating_info": {
+      "avg_rating": "4",
+      "rating_count": 15330,
+      "review_count": 102,
+      "sku_id": 40113736
+    },
+    "visibility": {
+      "path_id": 10864,
+      "fc_id": 1820,
+      "sa_id": 19226,
+      "supply_chain_ecs": null
+    },
+    "video_links": [],
+    "parent_info": {
+      "id": 366495,
+      "parent_product_id": null,
+      "child_product_id": null,
+      "order": 2,
+      "parent_id": 40113736,
+      "child_id": 40183056,
+      "is_default": 0,
+      "type": 1,
+      "created_by_id": 16946,
+      "updated_by_id": 16946,
+      "created_on": "2022-06-28 18:05:46",
+      "updated_on": "2022-06-28 18:05:46"
+    },
+    "high_affinity": [],
+    "inv_info": {
+      "skus": [
+        {
+          "id": 40183056,
+          "qty": 1,
+          "fc_id": 1820
+        }
+      ]
+    },
+    "prescription_only": false,
+    "prescription_or_virtual_consult": false,
+    "is_tobacco": false
+  },
+  {
+    "id": "266162",
+    "desc": "Instant Masala Noodles",
+    "sku_max_quantity": 0,
+    "pack_desc": "",
+    "hide_default_pack_size_widget": false,
+    "sort_index_pos": 0,
+    "cart_count": 0,
+    "is_best_value": false,
+    "magnitude": "280",
+    "sku_deck_type": "old_deck",
+    "w": "280 g",
+    "absolute_url": "/pd/266162/maggi-2-minute-instant-noodles-masala-280-g-pouch/",
+    "unit": "g",
+    "usp": "",
+    "requested_sku_id": "40125873",
+    "availability": {
+      "avail_status": "001",
+      "display_mrp": true,
+      "display_sp": true,
+      "not_for_sale": false,
+      "button": "Add",
+      "show_express": false
+    },
+    "pricing": {
+      "available_offer_type": "offer",
+      "offer_badge_text": "",
+      "emi_offers": {},
+      "bank_offers": {},
+      "discount": {
+        "mrp": "60",
+        "mrp_per_pack": null,
+        "d_text": "11% OFF",
+        "d_avail": "true",
+        "prim_price": {
+          "sp": "53.5",
+          "sp_per_pack": null,
+          "icon": {
+            "base_url": null,
+            "image": null,
+            "format": null
+          },
+          "desc": "",
+          "base_price": "0.19",
+          "base_unit": "g"
+        },
+        "sec_price": {
+          "sp": null,
+          "icon": null,
+          "desc": null,
+          "background": null
+        },
+        "subscription_price": "53.5",
+        "camp_detail": {
+          "c": [
+            3242949
+          ],
+          "c_f": 6.5,
+          "d_t": "percent",
+          "d_v": 10.83,
+          "dual_pricing": true,
+          "m_f": 0,
+          "narq": 2,
+          "r_c": [],
+          "v_f": 0
+        },
+        "offer_entry_text": "Har Din Sasta!",
+        "offer_available": "true"
+      },
+      "promo": null,
+      "subscribe": {
+        "desc": null,
+        "desc_label": null,
+        "subs_c": [],
+        "subs_sp": null
+      },
+      "offer": {
+        "arrow_image": "https://www.bbassets.com/media/uploads/arrow_image_G.png",
+        "background": {
+          "direction": "LEFT_RIGHT",
+          "gradient": [
+            {
+              "a": 1,
+              "b": 255,
+              "g": 255,
+              "r": 255
+            },
+            {
+              "a": 1,
+              "b": 204,
+              "g": 241,
+              "r": 228
+            }
+          ]
+        },
+        "background_border": {
+          "direction": "LEFT_RIGHT",
+          "gradient": [
+            {
+              "a": 1,
+              "b": 102,
+              "g": 213,
+              "r": 173
+            },
+            {
+              "a": 1,
+              "b": 51,
+              "g": 199,
+              "r": 145
+            }
+          ]
+        },
+        "campaign_type": "",
+        "campaign_type_icon": null,
+        "campaign_type_slug": "",
+        "entry_achieved_image": "https://www.bbassets.com/media/uploads/super_saver_tick_green.json",
+        "offer_available": "true",
+        "offer_ent_txt": "Har Din Sasta!",
+        "offer_entry_text": "Har Din Sasta!",
+        "offer_logo": "",
+        "offer_sp": 53.5,
+        "offer_type": "discount",
+        "progress_background": {
+          "direction": "LEFT_RIGHT",
+          "gradient": [
+            {
+              "a": 1,
+              "b": 255,
+              "g": 255,
+              "r": 255
+            },
+            {
+              "a": 1,
+              "b": 102,
+              "g": 213,
+              "r": 173
+            }
+          ]
+        },
+        "text": "Har Din Sasta!",
+        "text_color": "#476F00"
+      }
+    },
+    "variant_info": [],
+    "sku_badge": null,
+    "usps": [],
+    "images": [
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/266162_21-maggi-2-minute-instant-noodles-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/266162_21-maggi-2-minute-instant-noodles-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/266162_21-maggi-2-minute-instant-noodles-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/266162-2_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/266162-2_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/266162-2_2-maggi-2-minute-instant-noodles-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/266162-3_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/266162-3_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/266162-3_2-maggi-2-minute-instant-noodles-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/266162-4_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/266162-4_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/266162-4_2-maggi-2-minute-instant-noodles-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/266162-5_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/266162-5_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/266162-5_2-maggi-2-minute-instant-noodles-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/266162-6_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/266162-6_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/266162-6_2-maggi-2-minute-instant-noodles-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/266162-7_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/266162-7_2-maggi-2-minute-instant-noodles-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/266162-7_2-maggi-2-minute-instant-noodles-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/266162-8_1-maggi-2-minute-instant-noodles-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/266162-8_1-maggi-2-minute-instant-noodles-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/266162-8_1-maggi-2-minute-instant-noodles-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/266162-9_1-maggi-2-minute-instant-noodles-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/266162-9_1-maggi-2-minute-instant-noodles-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/266162-9_1-maggi-2-minute-instant-noodles-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/266162-10_1-maggi-2-minute-instant-noodles-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/266162-10_1-maggi-2-minute-instant-noodles-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/266162-10_1-maggi-2-minute-instant-noodles-masala.jpg"
+      }
+    ],
+    "subscription_info": null,
+    "variable_weight": null,
+    "brand": {
+      "name": "Maggi",
+      "slug": "maggi",
+      "url": "/pb/maggi/"
+    },
+    "theme": {},
+    "category": {
+      "tlc_name": "Snacks & Branded Foods",
+      "tlc_slug": "snacks-branded-foods",
+      "mlc_name": "Noodle, Pasta, Vermicelli",
+      "mlc_slug": "noodle-pasta-vermicelli",
+      "mlc_id": 1629,
+      "llc_name": "Instant Noodles",
+      "llc_slug": "type=pc&slug=instant-noodles",
+      "llc_id": 762
+    },
+    "additional_attr": {
+      "info": [
+        {
+          "type": "food_type",
+          "label": "veg",
+          "sub_type": "veg"
+        }
+      ]
+    },
+    "combo": null,
+    "children": [
+      {
+        "id": "266165",
+        "desc": "Instant Masala Noodles",
+        "sku_max_quantity": 0,
+        "pack_desc": "Pouch",
+        "hide_default_pack_size_widget": false,
+        "sort_index_pos": 0,
+        "cart_count": 0,
+        "is_best_value": false,
+        "magnitude": "140",
+        "sku_deck_type": "old_deck",
+        "w": "140 g",
+        "absolute_url": "/pd/266165/maggi-masala-2-minute-instant-noodles-140-g-pouch/",
+        "unit": "g",
+        "usp": "",
+        "requested_sku_id": "40125873",
+        "availability": {
+          "avail_status": "001",
+          "display_mrp": true,
+          "display_sp": true,
+          "not_for_sale": false,
+          "button": "Add",
+          "show_express": false
+        },
+        "pricing": {
+          "available_offer_type": "offer",
+          "offer_badge_text": "",
+          "emi_offers": {},
+          "bank_offers": {},
+          "discount": {
+            "mrp": "28",
+            "mrp_per_pack": null,
+            "d_text": "",
+            "d_avail": "false",
+            "prim_price": {
+              "sp": "28",
+              "sp_per_pack": null,
+              "icon": {
+                "base_url": null,
+                "image": null,
+                "format": null
+              },
+              "desc": "",
+              "base_price": "0.2",
+              "base_unit": "g"
+            },
+            "sec_price": {
+              "sp": null,
+              "icon": null,
+              "desc": null,
+              "background": null
+            },
+            "subscription_price": "28",
+            "camp_detail": {
+              "c": [],
+              "c_f": 0,
+              "d_t": "",
+              "d_v": 0,
+              "dual_pricing": false,
+              "m_f": 0,
+              "narq": 9999999,
+              "r_c": [],
+              "v_f": 0
+            },
+            "offer_entry_text": "",
+            "offer_available": "false"
+          },
+          "promo": null,
+          "subscribe": {
+            "desc": null,
+            "desc_label": null,
+            "subs_c": [],
+            "subs_sp": null
+          },
+          "offer": {}
+        },
+        "variant_info": [],
+        "sku_badge": null,
+        "usps": [],
+        "images": [
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266165_19-maggi-masala-2-minute-instant-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266165_19-maggi-masala-2-minute-instant-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266165_19-maggi-masala-2-minute-instant-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266165-2_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266165-2_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266165-2_2-maggi-masala-2-minute-instant-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266165-3_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266165-3_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266165-3_2-maggi-masala-2-minute-instant-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266165-4_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266165-4_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266165-4_2-maggi-masala-2-minute-instant-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266165-5_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266165-5_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266165-5_2-maggi-masala-2-minute-instant-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266165-6_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266165-6_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266165-6_2-maggi-masala-2-minute-instant-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266165-7_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266165-7_2-maggi-masala-2-minute-instant-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266165-7_2-maggi-masala-2-minute-instant-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266165-8_1-maggi-masala-2-minute-instant-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266165-8_1-maggi-masala-2-minute-instant-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266165-8_1-maggi-masala-2-minute-instant-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266165-9_1-maggi-masala-2-minute-instant-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266165-9_1-maggi-masala-2-minute-instant-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266165-9_1-maggi-masala-2-minute-instant-noodles.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266165-10_1-maggi-masala-2-minute-instant-noodles.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266165-10_1-maggi-masala-2-minute-instant-noodles.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266165-10_1-maggi-masala-2-minute-instant-noodles.jpg"
+          }
+        ],
+        "subscription_info": null,
+        "variable_weight": null,
+        "brand": {
+          "name": "Maggi",
+          "slug": "maggi",
+          "url": "/pb/maggi/"
+        },
+        "theme": {},
+        "category": {
+          "tlc_name": "Snacks & Branded Foods",
+          "tlc_slug": "snacks-branded-foods",
+          "mlc_name": "Noodle, Pasta, Vermicelli",
+          "mlc_slug": "noodle-pasta-vermicelli",
+          "mlc_id": 1629,
+          "llc_name": "Instant Noodles",
+          "llc_slug": "type=pc&slug=instant-noodles",
+          "llc_id": 762
+        },
+        "additional_attr": {
+          "info": [
+            {
+              "type": "food_type",
+              "label": "veg",
+              "sub_type": "veg"
+            }
+          ]
+        },
+        "combo": null,
+        "rating_info": {
+          "avg_rating": "4.1",
+          "rating_count": 138266,
+          "review_count": 945,
+          "sku_id": 266162
+        },
+        "visibility": {
+          "path_id": 10864,
+          "fc_id": 1820,
+          "sa_id": 19226,
+          "supply_chain_ecs": null
+        },
+        "additional_info": {},
+        "video_links": [],
+        "ctas": {
+          "data": []
+        },
+        "ean_code": "8901058023787",
+        "parent_info": {
+          "id": 320651,
+          "parent_product_id": null,
+          "child_product_id": null,
+          "order": 1,
+          "parent_id": 266162,
+          "child_id": 266165,
+          "is_default": 0,
+          "type": 1,
+          "created_by_id": 16946,
+          "updated_by_id": 16946,
+          "created_on": "2021-09-09 09:12:37",
+          "updated_on": "2021-09-09 09:12:37"
+        },
+        "high_affinity": [],
+        "inv_info": {
+          "skus": [
+            {
+              "id": 266165,
+              "qty": 1,
+              "fc_id": 1820
+            }
+          ]
+        },
+        "prescription_only": false,
+        "prescription_or_virtual_consult": false,
+        "is_tobacco": false
+      },
+      {
+        "id": "1230073",
+        "desc": "Instant Masala Noodles",
+        "sku_max_quantity": 0,
+        "pack_desc": "(Multipack)",
+        "hide_default_pack_size_widget": false,
+        "sort_index_pos": 0,
+        "cart_count": 0,
+        "is_best_value": false,
+        "magnitude": "140",
+        "sku_deck_type": "old_deck",
+        "w": "2x70 g",
+        "absolute_url": "/pd/1230073/maggi-2-minute-instant-noodles-masala-2-x-70-g/",
+        "unit": "g",
+        "usp": "",
+        "requested_sku_id": "40125873",
+        "availability": {
+          "avail_status": "001",
+          "display_mrp": true,
+          "display_sp": true,
+          "not_for_sale": false,
+          "button": "Add",
+          "show_express": false
+        },
+        "pricing": {
+          "available_offer_type": "",
+          "offer_badge_text": "",
+          "emi_offers": {},
+          "bank_offers": {},
+          "discount": {
+            "mrp": "28",
+            "mrp_per_pack": null,
+            "d_text": "",
+            "d_avail": "false",
+            "prim_price": {
+              "sp": "28",
+              "sp_per_pack": null,
+              "icon": {
+                "base_url": null,
+                "image": null,
+                "format": null
+              },
+              "desc": "",
+              "base_price": null,
+              "base_unit": null
+            },
+            "sec_price": {
+              "sp": null,
+              "icon": null,
+              "desc": null,
+              "background": null
+            },
+            "subscription_price": "28",
+            "camp_detail": {
+              "c": [
+                0
+              ]
+            },
+            "offer_entry_text": "",
+            "offer_available": "false"
+          },
+          "promo": null,
+          "subscribe": {},
+          "offer": {}
+        },
+        "variant_info": [],
+        "sku_badge": null,
+        "usps": [],
+        "images": [
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/1230073_5-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/1230073_5-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/1230073_5-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/1230073-2_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/1230073-2_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/1230073-2_4-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/1230073-3_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/1230073-3_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/1230073-3_4-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/1230073-4_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/1230073-4_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/1230073-4_4-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/1230073-5_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/1230073-5_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/1230073-5_4-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/1230073-6_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/1230073-6_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/1230073-6_4-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/1230073-7_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/1230073-7_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/1230073-7_4-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/1230073-8_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/1230073-8_4-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/1230073-8_4-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/1230073-9_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/1230073-9_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/1230073-9_3-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/1230073-10_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/1230073-10_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/1230073-10_2-maggi-2-minute-instant-noodles-masala.jpg"
+          }
+        ],
+        "subscription_info": null,
+        "variable_weight": null,
+        "brand": {
+          "name": "Maggi",
+          "slug": "maggi",
+          "url": "/pb/maggi/"
+        },
+        "theme": {},
+        "category": {
+          "tlc_name": "Snacks & Branded Foods",
+          "tlc_slug": "snacks-branded-foods",
+          "mlc_name": "Noodle, Pasta, Vermicelli",
+          "mlc_slug": "noodle-pasta-vermicelli",
+          "mlc_id": 1629,
+          "llc_name": "Instant Noodles",
+          "llc_slug": "type=pc&slug=instant-noodles",
+          "llc_id": 762
+        },
+        "additional_attr": {
+          "info": []
+        },
+        "combo": null,
+        "rating_info": {
+          "avg_rating": "4.1",
+          "rating_count": 138266,
+          "review_count": 945,
+          "sku_id": 266162
+        },
+        "visibility": {
+          "path_id": 10864,
+          "fc_id": 1820,
+          "sa_id": 19226,
+          "supply_chain_ecs": null
+        },
+        "additional_info": {},
+        "video_links": [],
+        "ctas": {
+          "data": []
+        },
+        "ean_code": "1230073",
+        "parent_info": {
+          "id": 560044,
+          "parent_product_id": null,
+          "child_product_id": null,
+          "order": 0,
+          "parent_id": 266162,
+          "child_id": 1230073,
+          "is_default": 0,
+          "type": 2,
+          "created_by_id": 90853,
+          "updated_by_id": 90853,
+          "created_on": "2024-07-15 11:47:17",
+          "updated_on": "2024-07-15 11:47:17"
+        },
+        "high_affinity": [],
+        "inv_info": {
+          "skus": [
+            {
+              "id": 266160,
+              "qty": 2,
+              "fc_id": 1820
+            }
+          ]
+        },
+        "prescription_only": false,
+        "prescription_or_virtual_consult": false,
+        "is_tobacco": false
+      },
+      {
+        "id": "266112",
+        "desc": "Instant Masala Noodles",
+        "sku_max_quantity": 0,
+        "pack_desc": "",
+        "hide_default_pack_size_widget": false,
+        "sort_index_pos": 0,
+        "cart_count": 0,
+        "is_best_value": false,
+        "magnitude": "420",
+        "sku_deck_type": "old_deck",
+        "w": "420 g",
+        "absolute_url": "/pd/266112/maggi-2-minute-instant-noodles-masala-420-g-pouch/",
+        "unit": "g",
+        "usp": "",
+        "requested_sku_id": "40125873",
+        "availability": {
+          "avail_status": "001",
+          "display_mrp": true,
+          "display_sp": true,
+          "not_for_sale": false,
+          "button": "Add",
+          "show_express": false
+        },
+        "pricing": {
+          "available_offer_type": "offer",
+          "offer_badge_text": "",
+          "emi_offers": {},
+          "bank_offers": {},
+          "discount": {
+            "mrp": "84",
+            "mrp_per_pack": null,
+            "d_text": "",
+            "d_avail": "false",
+            "prim_price": {
+              "sp": "84",
+              "sp_per_pack": null,
+              "icon": {
+                "base_url": null,
+                "image": null,
+                "format": null
+              },
+              "desc": "",
+              "base_price": "0.2",
+              "base_unit": "g"
+            },
+            "sec_price": {
+              "sp": null,
+              "icon": null,
+              "desc": null,
+              "background": null
+            },
+            "subscription_price": "84",
+            "camp_detail": {
+              "c": [],
+              "c_f": 0,
+              "d_t": "",
+              "d_v": 0,
+              "dual_pricing": false,
+              "m_f": 0,
+              "narq": 9999999,
+              "r_c": [],
+              "v_f": 0
+            },
+            "offer_entry_text": "",
+            "offer_available": "false"
+          },
+          "promo": null,
+          "subscribe": {
+            "desc": null,
+            "desc_label": null,
+            "subs_c": [],
+            "subs_sp": null
+          },
+          "offer": {}
+        },
+        "variant_info": [],
+        "sku_badge": null,
+        "usps": [],
+        "images": [
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266112_22-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266112_22-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266112_22-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266112-2_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266112-2_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266112-2_2-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266112-3_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266112-3_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266112-3_2-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266112-4_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266112-4_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266112-4_2-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266112-5_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266112-5_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266112-5_2-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266112-6_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266112-6_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266112-6_2-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266112-7_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266112-7_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266112-7_2-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266112-8_1-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266112-8_1-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266112-8_1-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266112-9_1-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266112-9_1-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266112-9_1-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266112-10_1-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266112-10_1-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266112-10_1-maggi-2-minute-instant-noodles-masala.jpg"
+          }
+        ],
+        "subscription_info": null,
+        "variable_weight": null,
+        "brand": {
+          "name": "Maggi",
+          "slug": "maggi",
+          "url": "/pb/maggi/"
+        },
+        "theme": {},
+        "category": {
+          "tlc_name": "Snacks & Branded Foods",
+          "tlc_slug": "snacks-branded-foods",
+          "mlc_name": "Noodle, Pasta, Vermicelli",
+          "mlc_slug": "noodle-pasta-vermicelli",
+          "mlc_id": 1629,
+          "llc_name": "Instant Noodles",
+          "llc_slug": "type=pc&slug=instant-noodles",
+          "llc_id": 762
+        },
+        "additional_attr": {
+          "info": [
+            {
+              "type": "food_type",
+              "label": "veg",
+              "sub_type": "veg"
+            }
+          ]
+        },
+        "combo": null,
+        "rating_info": {
+          "avg_rating": "4.1",
+          "rating_count": 138266,
+          "review_count": 945,
+          "sku_id": 266162
+        },
+        "visibility": {
+          "path_id": 10864,
+          "fc_id": 1820,
+          "sa_id": 19226,
+          "supply_chain_ecs": null
+        },
+        "additional_info": {},
+        "video_links": [],
+        "ctas": {
+          "data": []
+        },
+        "ean_code": "8901058019339",
+        "parent_info": {
+          "id": 320653,
+          "parent_product_id": null,
+          "child_product_id": null,
+          "order": 3,
+          "parent_id": 266162,
+          "child_id": 266112,
+          "is_default": 0,
+          "type": 1,
+          "created_by_id": 16946,
+          "updated_by_id": 16946,
+          "created_on": "2021-09-09 09:12:37",
+          "updated_on": "2021-09-09 09:12:37"
+        },
+        "high_affinity": [],
+        "inv_info": {
+          "skus": [
+            {
+              "id": 266112,
+              "qty": 1,
+              "fc_id": 1820
+            }
+          ]
+        },
+        "prescription_only": false,
+        "prescription_or_virtual_consult": false,
+        "is_tobacco": false
+      },
+      {
+        "id": "266109",
+        "desc": "2-Minute Instant Noodles",
+        "sku_max_quantity": 0,
+        "pack_desc": "",
+        "hide_default_pack_size_widget": false,
+        "sort_index_pos": 0,
+        "cart_count": 0,
+        "is_best_value": false,
+        "magnitude": "560",
+        "sku_deck_type": "old_deck",
+        "w": "560 g",
+        "absolute_url": "/pd/266109/maggi-2-minute-instant-noodles-masala-560-g-pouch/",
+        "unit": "g",
+        "usp": "Favourite Masala Taste",
+        "requested_sku_id": "40125873",
+        "availability": {
+          "avail_status": "001",
+          "display_mrp": true,
+          "display_sp": true,
+          "not_for_sale": false,
+          "button": "Add",
+          "show_express": false
+        },
+        "pricing": {
+          "available_offer_type": "offer",
+          "offer_badge_text": "",
+          "emi_offers": {},
+          "bank_offers": {},
+          "discount": {
+            "mrp": "112",
+            "mrp_per_pack": null,
+            "d_text": "",
+            "d_avail": "false",
+            "prim_price": {
+              "sp": "112",
+              "sp_per_pack": null,
+              "icon": {
+                "base_url": null,
+                "image": null,
+                "format": null
+              },
+              "desc": "",
+              "base_price": "0.2",
+              "base_unit": "g"
+            },
+            "sec_price": {
+              "sp": null,
+              "icon": null,
+              "desc": null,
+              "background": null
+            },
+            "subscription_price": "112",
+            "camp_detail": {
+              "c": [],
+              "c_f": 0,
+              "d_t": "",
+              "d_v": 0,
+              "dual_pricing": false,
+              "m_f": 0,
+              "narq": 9999999,
+              "r_c": [],
+              "v_f": 0
+            },
+            "offer_entry_text": "",
+            "offer_available": "false"
+          },
+          "promo": null,
+          "subscribe": {
+            "desc": null,
+            "desc_label": null,
+            "subs_c": [],
+            "subs_sp": null
+          },
+          "offer": {}
+        },
+        "variant_info": [],
+        "sku_badge": null,
+        "usps": [],
+        "images": [
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266109_25-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266109_25-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266109_25-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266109-2_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266109-2_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266109-2_3-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266109-3_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266109-3_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266109-3_3-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266109-4_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266109-4_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266109-4_3-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266109-5_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266109-5_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266109-5_3-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266109-6_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266109-6_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266109-6_3-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266109-7_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266109-7_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266109-7_3-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266109-8_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266109-8_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266109-8_3-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266109-9_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266109-9_3-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266109-9_3-maggi-2-minute-instant-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/266109-10_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/266109-10_2-maggi-2-minute-instant-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/266109-10_2-maggi-2-minute-instant-noodles-masala.jpg"
+          }
+        ],
+        "subscription_info": null,
+        "variable_weight": null,
+        "brand": {
+          "name": "Maggi",
+          "slug": "maggi",
+          "url": "/pb/maggi/"
+        },
+        "theme": {},
+        "category": {
+          "tlc_name": "Snacks & Branded Foods",
+          "tlc_slug": "snacks-branded-foods",
+          "mlc_name": "Noodle, Pasta, Vermicelli",
+          "mlc_slug": "noodle-pasta-vermicelli",
+          "mlc_id": 1629,
+          "llc_name": "Instant Noodles",
+          "llc_slug": "type=pc&slug=instant-noodles",
+          "llc_id": 762
+        },
+        "additional_attr": {
+          "info": [
+            {
+              "type": "food_type",
+              "label": "veg",
+              "sub_type": "veg"
+            }
+          ]
+        },
+        "combo": null,
+        "rating_info": {
+          "avg_rating": "4.1",
+          "rating_count": 138266,
+          "review_count": 945,
+          "sku_id": 266162
+        },
+        "visibility": {
+          "path_id": 10864,
+          "fc_id": 1820,
+          "sa_id": 19226,
+          "supply_chain_ecs": null
+        },
+        "additional_info": {},
+        "video_links": [],
+        "ctas": {
+          "data": []
+        },
+        "ean_code": "8901058023763",
+        "parent_info": {
+          "id": 320654,
+          "parent_product_id": null,
+          "child_product_id": null,
+          "order": 4,
+          "parent_id": 266162,
+          "child_id": 266109,
+          "is_default": 0,
+          "type": 1,
+          "created_by_id": 16946,
+          "updated_by_id": 16946,
+          "created_on": "2021-09-09 09:12:37",
+          "updated_on": "2021-09-09 09:12:37"
+        },
+        "high_affinity": [],
+        "inv_info": {
+          "skus": [
+            {
+              "id": 266109,
+              "qty": 1,
+              "fc_id": 1820
+            }
+          ]
+        },
+        "prescription_only": false,
+        "prescription_or_virtual_consult": false,
+        "is_tobacco": false
+      },
+      {
+        "id": "40125873",
+        "desc": "Instant Masala Noodles",
+        "sku_max_quantity": 0,
+        "pack_desc": "(12 x 70 g)",
+        "hide_default_pack_size_widget": false,
+        "sort_index_pos": 0,
+        "cart_count": 0,
+        "is_best_value": false,
+        "magnitude": "840",
+        "sku_deck_type": "old_deck",
+        "w": "840 g",
+        "absolute_url": "/pd/40125873/maggi-2-minute-noodles-masala-840-g/",
+        "unit": "g",
+        "usp": "",
+        "requested_sku_id": "40125873",
+        "availability": {
+          "avail_status": "001",
+          "display_mrp": true,
+          "display_sp": true,
+          "not_for_sale": false,
+          "button": "Add",
+          "show_express": false
+        },
+        "pricing": {
+          "available_offer_type": "offer",
+          "offer_badge_text": "",
+          "emi_offers": {},
+          "bank_offers": {},
+          "discount": {
+            "mrp": "168",
+            "mrp_per_pack": null,
+            "d_text": "\u20b94 OFF",
+            "d_avail": "true",
+            "prim_price": {
+              "sp": "164",
+              "sp_per_pack": null,
+              "icon": {
+                "base_url": null,
+                "image": null,
+                "format": null
+              },
+              "desc": "",
+              "base_price": "0.19",
+              "base_unit": "g"
+            },
+            "sec_price": {
+              "sp": null,
+              "icon": null,
+              "desc": null,
+              "background": null
+            },
+            "subscription_price": "164",
+            "camp_detail": {
+              "c": [
+                3185367
+              ],
+              "c_f": 0.51,
+              "d_t": "percent",
+              "d_v": 2.38,
+              "dual_pricing": true,
+              "m_f": 0,
+              "narq": 4,
+              "r_c": [],
+              "v_f": 3.49
+            },
+            "offer_entry_text": "Har Din Sasta!",
+            "offer_available": "true"
+          },
+          "promo": null,
+          "subscribe": {
+            "desc": null,
+            "desc_label": null,
+            "subs_c": [],
+            "subs_sp": null
+          },
+          "offer": {
+            "arrow_image": "https://www.bbassets.com/media/uploads/arrow_image_G.png",
+            "background": {
+              "direction": "LEFT_RIGHT",
+              "gradient": [
+                {
+                  "a": 1,
+                  "b": 255,
+                  "g": 255,
+                  "r": 255
+                },
+                {
+                  "a": 1,
+                  "b": 204,
+                  "g": 241,
+                  "r": 228
+                }
+              ]
+            },
+            "background_border": {
+              "direction": "LEFT_RIGHT",
+              "gradient": [
+                {
+                  "a": 1,
+                  "b": 102,
+                  "g": 213,
+                  "r": 173
+                },
+                {
+                  "a": 1,
+                  "b": 51,
+                  "g": 199,
+                  "r": 145
+                }
+              ]
+            },
+            "campaign_type": "",
+            "campaign_type_icon": null,
+            "campaign_type_slug": "",
+            "entry_achieved_image": "https://www.bbassets.com/media/uploads/super_saver_tick_green.json",
+            "offer_available": "true",
+            "offer_ent_txt": "Har Din Sasta!",
+            "offer_entry_text": "Har Din Sasta!",
+            "offer_logo": "",
+            "offer_sp": 164,
+            "offer_type": "discount",
+            "progress_background": {
+              "direction": "LEFT_RIGHT",
+              "gradient": [
+                {
+                  "a": 1,
+                  "b": 255,
+                  "g": 255,
+                  "r": 255
+                },
+                {
+                  "a": 1,
+                  "b": 102,
+                  "g": 213,
+                  "r": 173
+                }
+              ]
+            },
+            "text": "Har Din Sasta!",
+            "text_color": "#476F00"
+          }
+        },
+        "variant_info": [],
+        "sku_badge": null,
+        "usps": [],
+        "images": [
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40125873_16-maggi-2-minute-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40125873_16-maggi-2-minute-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40125873_16-maggi-2-minute-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40125873-2_8-maggi-2-minute-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40125873-2_8-maggi-2-minute-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40125873-2_8-maggi-2-minute-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40125873-3_7-maggi-2-minute-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40125873-3_7-maggi-2-minute-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40125873-3_7-maggi-2-minute-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40125873-4_7-maggi-2-minute-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40125873-4_7-maggi-2-minute-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40125873-4_7-maggi-2-minute-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40125873-5_7-maggi-2-minute-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40125873-5_7-maggi-2-minute-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40125873-5_7-maggi-2-minute-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40125873-6_7-maggi-2-minute-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40125873-6_7-maggi-2-minute-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40125873-6_7-maggi-2-minute-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40125873-7_7-maggi-2-minute-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40125873-7_7-maggi-2-minute-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40125873-7_7-maggi-2-minute-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40125873-8_6-maggi-2-minute-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40125873-8_6-maggi-2-minute-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40125873-8_6-maggi-2-minute-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40125873-9_4-maggi-2-minute-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40125873-9_4-maggi-2-minute-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40125873-9_4-maggi-2-minute-noodles-masala.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40125873-10_4-maggi-2-minute-noodles-masala.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40125873-10_4-maggi-2-minute-noodles-masala.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40125873-10_4-maggi-2-minute-noodles-masala.jpg"
+          }
+        ],
+        "subscription_info": null,
+        "variable_weight": null,
+        "brand": {
+          "name": "Maggi",
+          "slug": "maggi",
+          "url": "/pb/maggi/"
+        },
+        "theme": {},
+        "category": {
+          "tlc_name": "Snacks & Branded Foods",
+          "tlc_slug": "snacks-branded-foods",
+          "mlc_name": "Noodle, Pasta, Vermicelli",
+          "mlc_slug": "noodle-pasta-vermicelli",
+          "mlc_id": 1629,
+          "llc_name": "Instant Noodles",
+          "llc_slug": "type=pc&slug=instant-noodles",
+          "llc_id": 762
+        },
+        "additional_attr": {
+          "info": [
+            {
+              "type": "food_type",
+              "label": "veg",
+              "sub_type": "veg"
+            }
+          ]
+        },
+        "combo": null,
+        "rating_info": {
+          "avg_rating": "4.1",
+          "rating_count": 138266,
+          "review_count": 945,
+          "sku_id": 266162
+        },
+        "visibility": {
+          "path_id": 10864,
+          "fc_id": 1820,
+          "sa_id": 19226,
+          "supply_chain_ecs": null
+        },
+        "additional_info": {},
+        "video_links": [],
+        "ctas": {
+          "data": []
+        },
+        "ean_code": "44408091",
+        "parent_info": {
+          "id": 320655,
+          "parent_product_id": null,
+          "child_product_id": null,
+          "order": 5,
+          "parent_id": 266162,
+          "child_id": 40125873,
+          "is_default": 0,
+          "type": 1,
+          "created_by_id": 16946,
+          "updated_by_id": 16946,
+          "created_on": "2021-09-09 09:12:37",
+          "updated_on": "2021-09-09 09:12:37"
+        },
+        "high_affinity": [],
+        "inv_info": {
+          "skus": [
+            {
+              "id": 40125873,
+              "qty": 1,
+              "fc_id": 1820
+            }
+          ]
+        },
+        "prescription_only": false,
+        "prescription_or_virtual_consult": false,
+        "is_tobacco": false
+      }
+    ],
+    "rating_info": {
+      "avg_rating": "4.1",
+      "rating_count": 138266,
+      "review_count": 945,
+      "sku_id": 266162
+    },
+    "visibility": {
+      "path_id": 10864,
+      "fc_id": 1820,
+      "sa_id": 19226,
+      "supply_chain_ecs": null
+    },
+    "additional_info": {
+      "ppu": {
+        "url": "",
+        "label": "Per unit Price",
+        "type": "ppu"
+      }
+    },
+    "video_links": [],
+    "ctas": {
+      "data": []
+    },
+    "ean_code": "8901058010749",
+    "parent_info": {
+      "id": 320652,
+      "parent_product_id": null,
+      "child_product_id": null,
+      "order": 2,
+      "parent_id": 266162,
+      "child_id": 266162,
+      "is_default": 1,
+      "type": 1,
+      "created_by_id": 16946,
+      "updated_by_id": 16946,
+      "created_on": "2021-09-09 09:12:37",
+      "updated_on": "2021-09-09 09:12:37"
+    },
+    "high_affinity": [],
+    "inv_info": {
+      "skus": [
+        {
+          "id": 266162,
+          "qty": 1,
+          "fc_id": 1820
+        }
+      ]
+    },
+    "prescription_only": false,
+    "prescription_or_virtual_consult": false,
+    "is_tobacco": false
+  },
+  {
+    "id": "40332107",
+    "desc": "Chilli Chicken Cup Noodles",
+    "sku_max_quantity": 0,
+    "pack_desc": "",
+    "hide_default_pack_size_widget": false,
+    "sort_index_pos": 0,
+    "cart_count": 0,
+    "is_best_value": false,
+    "sku_deck_type": "old_deck",
+    "w": "90 g",
+    "absolute_url": "/pd/40332107/wow-chilli-chicken-cup-noodles-115-g/",
+    "usp": "",
+    "requested_sku_id": "40332107",
+    "availability": {
+      "avail_status": "001",
+      "display_mrp": true,
+      "display_sp": true,
+      "not_for_sale": false,
+      "button": "Add",
+      "show_express": false
+    },
+    "pricing": {
+      "available_offer_type": "offer",
+      "offer_badge_text": "",
+      "emi_offers": {},
+      "bank_offers": {},
+      "discount": {
+        "mrp": "125",
+        "mrp_per_pack": null,
+        "d_text": "45% OFF",
+        "d_avail": "true",
+        "prim_price": {
+          "sp": "68.75",
+          "sp_per_pack": null,
+          "icon": {
+            "base_url": null,
+            "image": null,
+            "format": null
+          },
+          "desc": "",
+          "base_price": "0.76",
+          "base_unit": "g"
+        },
+        "sec_price": {
+          "sp": null,
+          "icon": null,
+          "desc": null,
+          "background": null
+        },
+        "offer_entry_text": "",
+        "camp_detail": {
+          "c": [
+            3227926,
+            3188402
+          ],
+          "c_f": 6.25,
+          "d_t": "percent",
+          "d_v": 45,
+          "dual_pricing": false,
+          "m_f": 0,
+          "narq": 9999999,
+          "r_c": [
+            3227926,
+            3188402
+          ],
+          "v_f": 50
+        },
+        "subscription_price": "68.75",
+        "offer_available": "false"
+      },
+      "promo": null,
+      "subscribe": {
+        "desc": null,
+        "desc_label": null,
+        "subs_c": [],
+        "subs_sp": null
+      },
+      "offer": {}
+    },
+    "variant_info": [],
+    "sku_badge": null,
+    "usps": [],
+    "images": [
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40332107_1-wow-chilli-chicken-cup-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40332107_1-wow-chilli-chicken-cup-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40332107_1-wow-chilli-chicken-cup-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40332107-2_1-wow-chilli-chicken-cup-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40332107-2_1-wow-chilli-chicken-cup-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40332107-2_1-wow-chilli-chicken-cup-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40332107-3_1-wow-chilli-chicken-cup-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40332107-3_1-wow-chilli-chicken-cup-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40332107-3_1-wow-chilli-chicken-cup-noodles.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40332107-4_1-wow-chilli-chicken-cup-noodles.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40332107-4_1-wow-chilli-chicken-cup-noodles.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40332107-4_1-wow-chilli-chicken-cup-noodles.jpg"
+      }
+    ],
+    "subscription_info": null,
+    "variable_weight": null,
+    "brand": {
+      "name": "Wow! Noodles",
+      "slug": "wow-noodles",
+      "url": "/pb/wow-noodles/"
+    },
+    "theme": {},
+    "category": {
+      "tlc_name": "Snacks & Branded Foods",
+      "tlc_slug": "snacks-branded-foods",
+      "mlc_name": "Noodle, Pasta, Vermicelli",
+      "mlc_slug": "noodle-pasta-vermicelli",
+      "mlc_id": 1629,
+      "llc_name": "Cup Noodles",
+      "llc_slug": "type=pc&slug=cup-noodles",
+      "llc_id": 737
+    },
+    "additional_attr": {
+      "info": [
+        {
+          "type": "food_type",
+          "label": "non-veg",
+          "sub_type": "non-veg"
+        },
+        {
+          "type": "pl_top_right_sku_deck",
+          "label": "AD",
+          "image_url": "",
+          "sub_type": "sponsored"
+        },
+        {
+          "type": "osmos",
+          "position": 5,
+          "label": "Sponsored",
+          "image_url": "sponsored.png",
+          "sub_type": "annotation",
+          "ad_id": "66bbce20be739ff2444321bda68e967e4d6f8ac9b1ff2c1f0e2f24438f87dd481751d85ddb897ead3d72a6ae5e3077277cc172533bd963d7f9869bbb2002132326475f62123c7fea0cf3dd0fb6ede0b85c7900f03c7a08810f92d254c16acc1150bda66653b932b4c102949dfa0d649607524a36168058dc892729e84dea9e502ce2c61781e833881fa8e8d0af970ed8@~v1"
+        }
+      ]
+    },
+    "combo": null,
+    "children": [],
+    "rating_info": {
+      "avg_rating": null,
+      "rating_count": null,
+      "review_count": null,
+      "sku_id": null
+    },
+    "visibility": {
+      "path_id": 10864,
+      "fc_id": 1820,
+      "sa_id": 19226,
+      "supply_chain_ecs": null
+    },
+    "video_links": [],
+    "parent_info": {
+      "id": 579485,
+      "parent_product_id": null,
+      "child_product_id": null,
+      "order": 0,
+      "parent_id": 40332107,
+      "child_id": 40332107,
+      "is_default": 1,
+      "type": 1,
+      "created_by_id": 340420,
+      "updated_by_id": 340420,
+      "created_on": "2025-06-02 12:19:03",
+      "updated_on": "2025-06-02 12:19:03"
+    },
+    "high_affinity": [],
+    "inv_info": {
+      "skus": [
+        {
+          "id": 40332107,
+          "qty": 1,
+          "fc_id": 1820
+        }
+      ]
+    },
+    "prescription_only": false,
+    "prescription_or_virtual_consult": false,
+    "is_tobacco": false
+  },
+  {
+    "id": "40237234",
+    "desc": "2-Minute Veggie Masala Instant Noodles",
+    "sku_max_quantity": 0,
+    "pack_desc": "",
+    "hide_default_pack_size_widget": false,
+    "sort_index_pos": 1,
+    "cart_count": 0,
+    "is_best_value": false,
+    "magnitude": "248",
+    "sku_deck_type": "old_deck",
+    "w": "248 g",
+    "absolute_url": "/pd/40237234/maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre-248-g-pouch/",
+    "unit": "g",
+    "usp": "",
+    "requested_sku_id": "40237234",
+    "availability": {
+      "avail_status": "001",
+      "display_mrp": true,
+      "display_sp": true,
+      "not_for_sale": false,
+      "button": "Add",
+      "show_express": false
+    },
+    "pricing": {
+      "available_offer_type": "offer",
+      "offer_badge_text": "",
+      "emi_offers": {},
+      "bank_offers": {},
+      "discount": {
+        "mrp": "60",
+        "mrp_per_pack": null,
+        "d_text": "",
+        "d_avail": "false",
+        "prim_price": {
+          "sp": "60",
+          "sp_per_pack": null,
+          "icon": {
+            "base_url": null,
+            "image": null,
+            "format": null
+          },
+          "desc": "",
+          "base_price": "0.24",
+          "base_unit": "g"
+        },
+        "sec_price": {
+          "sp": null,
+          "icon": null,
+          "desc": null,
+          "background": null
+        },
+        "subscription_price": "60",
+        "camp_detail": {
+          "c": [],
+          "c_f": 0,
+          "d_t": "",
+          "d_v": 0,
+          "dual_pricing": false,
+          "m_f": 0,
+          "narq": 9999999,
+          "r_c": [],
+          "v_f": 0
+        },
+        "offer_entry_text": "",
+        "offer_available": "false"
+      },
+      "promo": null,
+      "subscribe": {
+        "desc": null,
+        "desc_label": null,
+        "subs_c": [],
+        "subs_sp": null
+      },
+      "offer": {}
+    },
+    "variant_info": [],
+    "sku_badge": null,
+    "usps": [],
+    "images": [
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40237234_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40237234_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40237234_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40237234-2_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40237234-2_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40237234-2_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40237234-3_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40237234-3_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40237234-3_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40237234-4_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40237234-4_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40237234-4_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40237234-5_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40237234-5_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40237234-5_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40237234-6_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40237234-6_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40237234-6_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40237234-7_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40237234-7_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40237234-7_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+      }
+    ],
+    "subscription_info": null,
+    "variable_weight": null,
+    "brand": {
+      "name": "Maggi",
+      "slug": "maggi",
+      "url": "/pb/maggi/"
+    },
+    "theme": {},
+    "category": {
+      "tlc_name": "Snacks & Branded Foods",
+      "tlc_slug": "snacks-branded-foods",
+      "mlc_name": "Noodle, Pasta, Vermicelli",
+      "mlc_slug": "noodle-pasta-vermicelli",
+      "mlc_id": 1629,
+      "llc_name": "Instant Noodles",
+      "llc_slug": "type=pc&slug=instant-noodles",
+      "llc_id": 762
+    },
+    "additional_attr": {
+      "info": [
+        {
+          "type": "food_type",
+          "label": "veg",
+          "sub_type": "veg"
+        }
+      ]
+    },
+    "combo": null,
+    "children": [
+      {
+        "id": "40237235",
+        "desc": "2-Minute Instant Noodles - Veggie Masala",
+        "sku_max_quantity": 0,
+        "pack_desc": "Pouch",
+        "hide_default_pack_size_widget": false,
+        "sort_index_pos": 0,
+        "cart_count": 0,
+        "is_best_value": true,
+        "magnitude": "62",
+        "sku_deck_type": "old_deck",
+        "w": "62 g",
+        "absolute_url": "/pd/40237235/maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre-62-g-pouch/",
+        "unit": "g",
+        "usp": "",
+        "requested_sku_id": "40237234",
+        "availability": {
+          "avail_status": "001",
+          "display_mrp": true,
+          "display_sp": true,
+          "not_for_sale": false,
+          "button": "Add",
+          "show_express": false
+        },
+        "pricing": {
+          "available_offer_type": "offer",
+          "offer_badge_text": "",
+          "emi_offers": {},
+          "bank_offers": {},
+          "discount": {
+            "mrp": "14",
+            "mrp_per_pack": null,
+            "d_text": "",
+            "d_avail": "false",
+            "prim_price": {
+              "sp": "14",
+              "sp_per_pack": null,
+              "icon": {
+                "base_url": null,
+                "image": null,
+                "format": null
+              },
+              "desc": "",
+              "base_price": "0.22",
+              "base_unit": "g"
+            },
+            "sec_price": {
+              "sp": null,
+              "icon": null,
+              "desc": null,
+              "background": null
+            },
+            "subscription_price": "14",
+            "camp_detail": {
+              "c": [],
+              "c_f": 0,
+              "d_t": "",
+              "d_v": 0,
+              "dual_pricing": false,
+              "m_f": 0,
+              "narq": 9999999,
+              "r_c": [],
+              "v_f": 0
+            },
+            "offer_entry_text": "",
+            "offer_available": "false"
+          },
+          "promo": null,
+          "subscribe": {
+            "desc": null,
+            "desc_label": null,
+            "subs_c": [],
+            "subs_sp": null
+          },
+          "offer": {}
+        },
+        "variant_info": [],
+        "sku_badge": null,
+        "usps": [],
+        "images": [
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40237235_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40237235_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40237235_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40237235-2_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40237235-2_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40237235-2_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40237235-3_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40237235-3_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40237235-3_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40237235-4_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40237235-4_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40237235-4_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40237235-5_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40237235-5_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40237235-5_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40237235-6_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40237235-6_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40237235-6_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+          },
+          {
+            "s": "https://www.bbassets.com/media/uploads/p/s/40237235-7_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "m": "https://www.bbassets.com/media/uploads/p/m/40237235-7_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg",
+            "l": "https://www.bbassets.com/media/uploads/p/l/40237235-7_3-maggi-2-minute-instant-noodles-veggie-masala-made-with-quality-spices-rich-in-fibre.jpg"
+          }
+        ],
+        "subscription_info": null,
+        "variable_weight": null,
+        "brand": {
+          "name": "Maggi",
+          "slug": "maggi",
+          "url": "/pb/maggi/"
+        },
+        "theme": {},
+        "category": {
+          "tlc_name": "Snacks & Branded Foods",
+          "tlc_slug": "snacks-branded-foods",
+          "mlc_name": "Noodle, Pasta, Vermicelli",
+          "mlc_slug": "noodle-pasta-vermicelli",
+          "mlc_id": 1629,
+          "llc_name": "Instant Noodles",
+          "llc_slug": "type=pc&slug=instant-noodles",
+          "llc_id": 762
+        },
+        "additional_attr": {
+          "info": [
+            {
+              "type": "food_type",
+              "label": "veg",
+              "sub_type": "veg"
+            }
+          ]
+        },
+        "combo": null,
+        "rating_info": {
+          "avg_rating": "4.1",
+          "rating_count": 1694,
+          "review_count": 14,
+          "sku_id": 40237234
+        },
+        "visibility": {
+          "path_id": 10864,
+          "fc_id": 1820,
+          "sa_id": 19226,
+          "supply_chain_ecs": null
+        },
+        "additional_info": {
+          "ppu": {
+            "url": "",
+            "label": "Per unit Price",
+            "type": "ppu"
+          }
+        },
+        "video_links": [],
+        "ctas": {
+          "data": []
+        },
+        "ean_code": "8901058000450",
+        "parent_info": {
+          "id": 460999,
+          "parent_product_id": null,
+          "child_product_id": null,
+          "order": 0,
+          "parent_id": 40237234,
+          "child_id": 40237235,
+          "is_default": 0,
+          "type": 1,
+          "created_by_id": 11609,
+          "updated_by_id": 11609,
+          "created_on": "2022-12-29 21:54:22",
+          "updated_on": "2022-12-29 21:54:22"
+        },
+        "high_affinity": [],
+        "inv_info": {
+          "skus": [
+            {
+              "id": 40237235,
+              "qty": 1,
+              "fc_id": 1820
+            }
+          ]
+        },
+        "prescription_only": false,
+        "prescription_or_virtual_consult": false,
+        "is_tobacco": false
+      }
+    ],
+    "rating_info": {
+      "avg_rating": "4.1",
+      "rating_count": 1694,
+      "review_count": 14,
+      "sku_id": 40237234
+    },
+    "visibility": {
+      "path_id": 10864,
+      "fc_id": 1820,
+      "sa_id": 19226,
+      "supply_chain_ecs": null
+    },
+    "additional_info": {},
+    "video_links": [],
+    "ctas": {
+      "data": []
+    },
+    "ean_code": "8901058000542",
+    "parent_info": {
+      "id": 461000,
+      "parent_product_id": null,
+      "child_product_id": null,
+      "order": 1,
+      "parent_id": 40237234,
+      "child_id": 40237234,
+      "is_default": 1,
+      "type": 1,
+      "created_by_id": 11609,
+      "updated_by_id": 11609,
+      "created_on": "2022-12-29 21:54:22",
+      "updated_on": "2022-12-29 21:54:22"
+    },
+    "high_affinity": [],
+    "inv_info": {
+      "skus": [
+        {
+          "id": 40237234,
+          "qty": 1,
+          "fc_id": 1820
+        }
+      ]
+    },
+    "prescription_only": false,
+    "prescription_or_virtual_consult": false,
+    "is_tobacco": false
+  },
+  {
+    "id": "40192444",
+    "desc": "Atta Noodles - Desi Masala",
+    "sku_max_quantity": 0,
+    "pack_desc": "",
+    "hide_default_pack_size_widget": false,
+    "sort_index_pos": 0,
+    "cart_count": 0,
+    "is_best_value": false,
+    "sku_deck_type": "old_deck",
+    "w": "60 g",
+    "absolute_url": "/pd/40192444/patanjali-atta-noodles-desi-masala-60-g/",
+    "usp": "",
+    "requested_sku_id": "40192444",
+    "availability": {
+      "avail_status": "001",
+      "display_mrp": true,
+      "display_sp": true,
+      "not_for_sale": false,
+      "button": "Add",
+      "show_express": false
+    },
+    "pricing": {
+      "available_offer_type": "offer",
+      "offer_badge_text": "",
+      "emi_offers": {},
+      "bank_offers": {},
+      "discount": {
+        "mrp": "12",
+        "mrp_per_pack": null,
+        "d_text": "",
+        "d_avail": "false",
+        "prim_price": {
+          "sp": "12",
+          "sp_per_pack": null,
+          "icon": {
+            "base_url": null,
+            "image": null,
+            "format": null
+          },
+          "desc": "",
+          "base_price": "0.2",
+          "base_unit": "g"
+        },
+        "sec_price": {
+          "sp": null,
+          "icon": null,
+          "desc": null,
+          "background": null
+        },
+        "offer_entry_text": "",
+        "camp_detail": {
+          "c": [],
+          "c_f": 0,
+          "d_t": "",
+          "d_v": 0,
+          "dual_pricing": false,
+          "m_f": 0,
+          "narq": 9999999,
+          "r_c": [],
+          "v_f": 0
+        },
+        "subscription_price": "12",
+        "offer_available": "false"
+      },
+      "promo": null,
+      "subscribe": {
+        "desc": null,
+        "desc_label": null,
+        "subs_c": [],
+        "subs_sp": null
+      },
+      "offer": {}
+    },
+    "variant_info": [],
+    "sku_badge": null,
+    "usps": [],
+    "images": [
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40192444_2-patanjali-atta-noodles-desi-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40192444_2-patanjali-atta-noodles-desi-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40192444_2-patanjali-atta-noodles-desi-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40192444-2_2-patanjali-atta-noodles-desi-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40192444-2_2-patanjali-atta-noodles-desi-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40192444-2_2-patanjali-atta-noodles-desi-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40192444-3_2-patanjali-atta-noodles-desi-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40192444-3_2-patanjali-atta-noodles-desi-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40192444-3_2-patanjali-atta-noodles-desi-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40192444-4_2-patanjali-atta-noodles-desi-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40192444-4_2-patanjali-atta-noodles-desi-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40192444-4_2-patanjali-atta-noodles-desi-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40192444-5_2-patanjali-atta-noodles-desi-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40192444-5_2-patanjali-atta-noodles-desi-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40192444-5_2-patanjali-atta-noodles-desi-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40192444-6_2-patanjali-atta-noodles-desi-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40192444-6_2-patanjali-atta-noodles-desi-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40192444-6_2-patanjali-atta-noodles-desi-masala.jpg"
+      },
+      {
+        "s": "https://www.bbassets.com/media/uploads/p/s/40192444-7_2-patanjali-atta-noodles-desi-masala.jpg",
+        "m": "https://www.bbassets.com/media/uploads/p/m/40192444-7_2-patanjali-atta-noodles-desi-masala.jpg",
+        "l": "https://www.bbassets.com/media/uploads/p/l/40192444-7_2-patanjali-atta-noodles-desi-masala.jpg"
+      }
+    ],
+    "subscription_info": null,
+    "variable_weight": null,
+    "brand": {
+      "name": "Patanjali",
+      "slug": "patanjali",
+      "url": "/pb/patanjali/"
+    },
+    "theme": {},
+    "category": {
+      "tlc_name": "Snacks & Branded Foods",
+      "tlc_slug": "snacks-branded-foods",
+      "mlc_name": "Noodle, Pasta, Vermicelli",
+      "mlc_slug": "noodle-pasta-vermicelli",
+      "mlc_id": 1629,
+      "llc_name": "Instant Noodles",
+      "llc_slug": "type=pc&slug=instant-noodles",
+      "llc_id": 762
+    },
+    "additional_attr": {
+      "info": [
+        {
+          "type": "food_type",
+          "label": "veg",
+          "sub_type": "veg"
+        },
+        {
+          "type": "pl_top_right_sku_deck",
+          "label": "AD",
+          "image_url": "",
+          "sub_type": "sponsored"
+        },
+        {
+          "type": "osmos",
+          "position": 7,
+          "label": "Sponsored",
+          "image_url": "sponsored.png",
+          "sub_type": "annotation",
+          "ad_id": "0e0b6cb00a0a1ee2b218a0678edf3138aef6619c4c3acee11df51ce6272e354270f60e4fa6c6167ede8f04c94b78876d150bbcb0e2a30fc992a98c2704627bdecc8970ce5b8416072dde77e39e81e2569be5c7b8f5f5b8b572a55f2f9d08bf4841af761f61ad449eb88d4c5e69817692b34ec59389e9cbac1c1aff3227a5fd8d150ac88c0250389f5c4e30441a213798@~v1"
+        }
+      ]
+    },
+    "combo": null,
+    "children": [],
+    "rating_info": {
+      "avg_rating": "4.3",
+      "rating_count": 50,
+      "review_count": 3,
+      "sku_id": 40192444
+    },
+    "visibility": {
+      "path_id": 10864,
+      "fc_id": 1820,
+      "sa_id": 19226,
+      "supply_chain_ecs": null
+    },
+    "video_links": [],
+    "parent_info": {
+      "id": 559743,
+      "parent_product_id": null,
+      "child_product_id": null,
+      "order": 0,
+      "parent_id": 40192444,
+      "child_id": 40192444,
+      "is_default": 0,
+      "type": 1,
+      "created_by_id": 90853,
+      "updated_by_id": 90853,
+      "created_on": "2024-07-15 11:43:57",
+      "updated_on": "2024-07-15 11:43:57"
+    },
+    "high_affinity": [],
+    "inv_info": {
+      "skus": [
+        {
+          "id": 40192444,
+          "qty": 1,
+          "fc_id": 1820
+        }
+      ]
+    },
+    "prescription_only": false,
+    "prescription_or_virtual_consult": false,
+    "is_tobacco": false
+  }
+]

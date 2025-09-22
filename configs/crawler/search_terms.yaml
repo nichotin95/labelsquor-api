@@ -1,0 +1,177 @@
+# Search Terms Configuration for LabelSquor Crawler
+# Easy to edit - just add/remove items from lists!
+
+# Priority levels:
+# 9 = Highest (daily crawl)
+# 7-8 = High (every 2 days)
+# 5-6 = Medium (weekly)
+# 1-4 = Low (monthly)
+
+priority_brands:
+  # Most popular Indian FMCG brands
+  tier1:  # Priority 9 - Daily monitoring
+    - maggi
+    - lays
+    - kurkure
+    - britannia
+    - parle
+    - amul
+    - haldiram
+    - nestle
+    - cadbury
+    - coca cola
+    - pepsi
+    
+  tier2:  # Priority 8 - Every 2 days
+    - dabur
+    - patanjali
+    - mother dairy
+    - bingo
+    - uncle chips
+    - mtr
+    - everest
+    - mdh
+    - catch
+    - tata
+    
+  tier3:  # Priority 7 - Twice a week
+    - vicco
+    - himalaya
+    - bajaj
+    - godrej
+    - ching's secret
+    - bikaji
+    - balaji
+    - yellow diamond
+
+product_categories:
+  # Generic product terms
+  snacks:
+    - chips
+    - namkeen
+    - bhujia
+    - mixture
+    - papad
+    - wafers
+    - popcorn
+    
+  beverages:
+    - soft drinks
+    - juice
+    - energy drink
+    - mineral water
+    - lassi
+    - buttermilk
+    
+  instant_foods:
+    - noodles
+    - pasta
+    - soup
+    - ready to eat
+    - instant mix
+    - oats
+    
+  dairy:
+    - milk
+    - curd
+    - paneer
+    - cheese
+    - butter
+    - ghee
+    
+  staples:
+    - atta
+    - rice
+    - dal
+    - oil
+    - sugar
+    - salt
+    - spices
+
+health_keywords:
+  # High priority health searches
+  diabetic_friendly:
+    - sugar free
+    - no sugar
+    - diabetic
+    - low glycemic
+    
+  weight_management:
+    - low fat
+    - zero calorie
+    - diet
+    - slim
+    - lite
+    
+  protein_rich:
+    - high protein
+    - protein
+    - whey
+    - soy protein
+    
+  special_diets:
+    - gluten free
+    - vegan
+    - keto
+    - organic
+    - lactose free
+
+trending_searches:
+  # Update these monthly based on trends
+  current_month:
+    - diwali special
+    - festive pack
+    - limited edition
+    - new launch
+    - combo offer
+    
+  seasonal:
+    - summer drinks
+    - monsoon snacks
+    - winter special
+
+certification_keywords:
+  # Important for trust scoring
+  indian_certifications:
+    - fssai
+    - agmark
+    - bis hallmark
+    - india organic
+    - jaivik bharat
+    
+  international:
+    - iso certified
+    - halal
+    - kosher
+    - non gmo
+
+# Special monitoring lists
+high_risk_ingredients:
+  # Monitor for health alerts
+  - msg
+  - trans fat
+  - high sodium
+  - artificial colors
+  - preservatives
+
+# Regional specialties (add your region!)
+regional_products:
+  north_india:
+    - chole bhature masala
+    - rajma masala
+    - paneer tikka
+    
+  south_india:
+    - sambar powder
+    - rasam powder
+    - filter coffee
+    
+  west_india:
+    - vada pav chutney
+    - gujarati snacks
+    - kokum juice
+    
+  east_india:
+    - rosogolla
+    - mishti doi
+    - jhalmuri

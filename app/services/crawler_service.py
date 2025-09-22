@@ -9,7 +9,7 @@ import httpx
 from bs4 import BeautifulSoup
 import hashlib
 
-from app.repositories import RetailerRepository, SourcePageRepository
+from app.repositories import RetailerRepository, SourcePageRepository, ProcessingQueueRepository
 from app.models import Retailer, CrawlSession, SourcePage, ProcessingQueue
 from app.core.logging import log
 from app.core.exceptions import ExternalServiceError
@@ -120,7 +120,7 @@ class CrawlerService:
                 # BigBasket uses specific selectors
                 product_links = soup.select('div[qa="product"] a')
                 product_urls = [
-                    f"https://www.bigbasket.com{link['href']}" 
+                    f"https://www.n .com{link['href']}" 
                     for link in product_links if link.get('href')
                 ]
             
