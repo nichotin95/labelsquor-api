@@ -133,6 +133,21 @@ deploy-render:
 	@echo "🚀 Deploying to Render..."
 	@echo "Push to main branch to trigger Render deployment"
 
+deploy-gcp:
+	@echo "🚀 Deploying to Google Cloud Run..."
+	gcloud run deploy labelsquor-api \
+		--source . \
+		--platform managed \
+		--region us-central1 \
+		--allow-unauthenticated \
+		--memory 1Gi \
+		--cpu 1 \
+		--max-instances 10
+
+setup-gcp:
+	@echo "🔧 Setting up Google Cloud project..."
+	gcloud services enable cloudbuild.googleapis.com run.googleapis.com containerregistry.googleapis.com
+
 # Environment setup
 setup-prod-env:
 	@echo "📝 Setting up production environment..."
