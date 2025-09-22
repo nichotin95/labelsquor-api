@@ -15,6 +15,7 @@ from app.api.deps import get_current_user
 from app.core.config import settings
 from app.core.database import get_session, AsyncSessionLocal
 from app.core.logging import log
+from app.core.security import verify_admin_api_key
 from app.models import CrawlSession, Product, Retailer
 from app.services.ai_pipeline_service import AIPipelineService
 from app.services.discovery_orchestrator import DiscoveryOrchestrator
@@ -122,6 +123,7 @@ async def crawl_category(
     orchestrator: DiscoveryOrchestrator = Depends(get_orchestrator),
     consolidator: ProductConsolidator = Depends(get_consolidator),
     pipeline: AIPipelineService = Depends(get_pipeline),
+    _: bool = Depends(verify_admin_api_key),  # Admin authentication required
 ):
     """
     Crawl a category across multiple retailers and analyze products
@@ -200,6 +202,7 @@ async def search_and_analyze_product(
     db: AsyncSession = Depends(get_session),
     consolidator: ProductConsolidator = Depends(get_consolidator),
     pipeline: AIPipelineService = Depends(get_pipeline),
+    _: bool = Depends(verify_admin_api_key),  # Admin authentication required
 ):
     """
     Search for a specific product across retailers and analyze it

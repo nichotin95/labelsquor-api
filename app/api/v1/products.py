@@ -11,9 +11,15 @@ from fastapi import APIRouter, Depends, Query, HTTPException
 from pydantic import BaseModel, Field
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
 
 from app.core.database import get_session, AsyncSessionLocal
+from app.core.security import verify_consumer_access
 from app.services.ai_analysis_service import AIAnalysisService
+
+# Rate limiter
+limiter = Limiter(key_func=get_remote_address)
 
 router = APIRouter(tags=["products"])
 
@@ -103,7 +109,9 @@ class FilterOptions(BaseModel):
 
 # Consumer-facing endpoints
 @router.get("/search", response_model=ProductSearchResponse)
+@limiter.limit("100/minute")  # Rate limit for consumer endpoints
 async def search_products(
+    request,  # Required for rate limiting
     # Search parameters
     q: Optional[str] = Query(None, description="Search query (product name, brand, ingredients)"),
     

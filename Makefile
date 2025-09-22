@@ -107,6 +107,38 @@ serve-prod:
 	@echo "🚀 Starting API server in production mode..."
 	source venv/bin/activate && uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
 
+# Docker commands
+docker-build:
+	@echo "🐳 Building Docker image..."
+	docker build -t labelsquor-api .
+
+docker-run:
+	@echo "🐳 Running with Docker Compose..."
+	docker-compose up -d
+
+docker-stop:
+	@echo "🐳 Stopping Docker containers..."
+	docker-compose down
+
+docker-logs:
+	@echo "📋 Showing Docker logs..."
+	docker-compose logs -f api
+
+# Production deployment
+deploy-railway:
+	@echo "🚀 Deploying to Railway..."
+	railway up
+
+deploy-render:
+	@echo "🚀 Deploying to Render..."
+	@echo "Push to main branch to trigger Render deployment"
+
+# Environment setup
+setup-prod-env:
+	@echo "📝 Setting up production environment..."
+	@echo "Copy env.example to .env and configure your values"
+	cp env.example .env
+
 test-cov:
 	@echo "🧪 Running tests with coverage..."
 	pytest tests/ --cov=app --cov-report=html --cov-report=term || echo "⚠️  Tests not implemented yet"
