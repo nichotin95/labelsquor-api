@@ -79,39 +79,3 @@ fetch(`${API_BASE}/api/v1/crawler/crawl/category`, {
 
 **Perfect for LabelSquor!** 🎉
 
-## 🕷️ Crawler Deployment & Testing
-
-### Option 1: GitHub Actions (Recommended for GCP blocking)
-```bash
-# The crawlers are already configured in .github/workflows/crawl-products.yml
-# Just push code and trigger:
-gh workflow run crawl-products -f retailer=bigbasket -f search_terms="maggi,lays"
-```
-
-### Option 2: Run on Cloud Run (with anti-blocking)
-```bash
-# Deploy crawler service
-cd crawlers
-gcloud run deploy labelsquor-crawler \
-  --source . \
-  --platform managed \
-  --region us-central1 \
-  --memory 2Gi \
-  --timeout 3600 \
-  --set-env-vars="LABELSQUOR_API_URL=https://labelsquor-api-[hash]-uc.a.run.app,LABELSQUOR_API_KEY=your-admin-key"
-
-# Test crawler (will auto-detect GCP and enable proxies)
-gcloud run jobs execute labelsquor-crawler \
-  --args="python,run_crawler.py,bigbasket,--search-terms,maggi"
-```
-
-### Test the deployed crawler
-```bash
-# Check if products are being received
-curl https://labelsquor-api-[hash]-uc.a.run.app/api/v1/crawler/products/recent
-
-# Monitor logs
-gcloud logging read "resource.type=cloud_run_revision AND resource.labels.service_name=labelsquor-api" --limit 50 --format json | jq '.[] | select(.jsonPayload.path | contains("/crawler/products"))'
-```
-
-The anti-blocking features are automatic on GCP!

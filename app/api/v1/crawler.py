@@ -501,43 +501,6 @@ async def get_recent_products(
 
 
 # Background processing functions
-async def _call_external_crawler(
-    retailer: str,
-    search_terms: List[str],
-    max_products: int
-) -> List[Dict[str, Any]]:
-    """Call external crawler service with proxy rotation"""
-    import httpx
-    import os
-    
-    crawler_url = os.environ.get("CRAWLER_SERVICE_URL", "https://labelsquor-crawler-143169591686.us-central1.run.app")
-    
-    try:
-        log.info(f"Calling external crawler at {crawler_url} for {retailer}")
-        
-        async with httpx.AsyncClient(timeout=60.0) as client:
-            response = await client.post(
-                f"{crawler_url}/crawl/simple",
-                json={
-                    "retailer": retailer,
-                    "search_terms": search_terms,
-                    "max_products": max_products
-                }
-            )
-            
-            if response.status_code == 200:
-                data = response.json()
-                log.info(f"External crawler returned {data.get('products_found', 0)} products")
-                return data.get("sample", [])
-            else:
-                log.error(f"External crawler failed: {response.status_code}")
-                return []
-                
-    except Exception as e:
-        log.error(f"External crawler error: {str(e)}")
-        return []
-
-
 async def _process_category_crawl(
     session_ids: List[UUID],
     request: CategoryCrawlRequest,
@@ -546,62 +509,25 @@ async def _process_category_crawl(
     pipeline: AIPipelineService,
 ):
     """Process category crawl in background"""
-    import os
-    
-    use_external_crawler = os.environ.get("USE_EXTERNAL_CRAWLER", "false").lower() == "true"
-    
     try:
-        log.info(f"Starting category crawl for '{request.category}' (external_crawler={use_external_crawler})")
+        log.info(f"Starting category crawl for '{request.category}'")
 
-        # Check if we should use external crawler
+        # Generate discovery tasks for each retailer
+        tasks = []
+        for retailer in request.retailers:
+            task = await orchestrator.generate_category_tasks(
+                category=request.category, retailer=retailer, max_products=request.max_products
+            )
+            tasks.extend(task)
+
+        log.info(f"Generated {len(tasks)} discovery tasks")
+
+        # Process tasks and collect products
         all_products = []
-        
-        if use_external_crawler and request.category in ["snacks", "beverages", "grocery"]:
-            # Use external crawler for supported categories
-            for retailer in request.retailers:
-                if retailer == "bigbasket":  # Currently only BigBasket supported
-                    # Convert category to search terms
-                    search_terms = []
-                    if request.category == "snacks":
-                        search_terms = ["chips", "namkeen", "biscuit", "chocolate"]
-                    elif request.category == "beverages":
-                        search_terms = ["juice", "cola", "energy drink", "coffee"]
-                    elif request.category == "grocery":
-                        search_terms = ["atta", "rice", "dal", "oil"]
-                    else:
-                        search_terms = [request.category]
-                    
-                    log.info(f"Using external crawler for {retailer} with terms: {search_terms}")
-                    products = await _call_external_crawler(
-                        retailer=retailer,
-                        search_terms=search_terms,
-                        max_products=request.max_products
-                    )
-                    all_products.extend(products)
-                else:
-                    # Fall back to local crawler for other retailers
-                    task = await orchestrator.generate_category_tasks(
-                        category=request.category, retailer=retailer, max_products=request.max_products
-                    )
-                    for t in task:
-                        products = await orchestrator.execute_task(t)
-                        all_products.extend(products)
-        else:
-            # Use local crawler (original logic)
-            tasks = []
-            for retailer in request.retailers:
-                task = await orchestrator.generate_category_tasks(
-                    category=request.category, retailer=retailer, max_products=request.max_products
-                )
-                tasks.extend(task)
-
-            log.info(f"Generated {len(tasks)} discovery tasks")
-
-            # Process tasks and collect products
-            for task in tasks:
-                products = await orchestrator.execute_task(task)
-                log.info(f"Task returned {len(products)} products")
-                all_products.extend(products)
+        for task in tasks:
+            products = await orchestrator.execute_task(task)
+            log.info(f"Task returned {len(products)} products")
+            all_products.extend(products)
 
         log.info(f"Total products collected: {len(all_products)}")
 

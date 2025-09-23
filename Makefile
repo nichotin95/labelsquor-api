@@ -266,9 +266,6 @@ install-ml:
 	@echo "🤖 Installing ML dependencies..."
 	pip install -r requirements/ml.txt
 
-install-crawler:
-	@echo "🕷️  Installing crawler dependencies..."
-	pip install -r requirements/crawler.txt
 
 install-all:
 	@echo "📦 Installing all dependencies..."

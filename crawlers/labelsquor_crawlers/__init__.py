@@ -1,1 +1,0 @@
-# LabelSquor Scrapy Crawlers
