@@ -8,8 +8,8 @@ import json
 import httpx
 from typing import Dict, Any, List, Optional, Tuple
 from datetime import datetime, date
-from google import genai
-from google.genai import types as genai_types
+import google.generativeai as genai
+from google.generativeai import types as genai_types
 from PIL import Image
 from io import BytesIO
 from dataclasses import dataclass, asdict
