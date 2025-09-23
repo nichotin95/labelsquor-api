@@ -87,4 +87,5 @@ alembic/versions/*.pyc
 
 # Application specific
 usage_tracking.json
-requirements-frozen.txt
+requirements-frozen.txtgithub-key.json
+temp-github-key.json
