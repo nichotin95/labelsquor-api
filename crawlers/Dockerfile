@@ -1,59 +1,26 @@
-# Multi-stage build for Scrapy crawlers
-FROM python:3.11-slim as builder
+# Crawler service with anti-blocking for GCP
+FROM python:3.11-slim
 
-# Install build dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    gcc \
-    g++ \
-    libxml2-dev \
-    libxslt1-dev \
-    libssl-dev \
-    libffi-dev \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
 WORKDIR /app
+
+# Copy crawler requirements
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Production stage
-FROM python:3.11-slim
-
-# Install runtime dependencies
-RUN apt-get update && apt-get install -y \
-    libxml2 \
-    libxslt1.1 \
-    wget \
-    gnupg \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install Chromium for Playwright
-RUN apt-get update && apt-get install -y \
-    chromium \
-    chromium-driver \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copy installed packages from builder
-COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
-COPY --from=builder /usr/local/bin /usr/local/bin
-
-# Set up the application
-WORKDIR /app
+# Copy crawler code
 COPY . .
 
-# Create non-root user
-RUN useradd -m -u 1000 scrapy && chown -R scrapy:scrapy /app
-USER scrapy
+# Set environment variables for GCP
+ENV SCRAPY_SETTINGS_MODULE=labelsquor_crawlers.settings_gcp
+ENV PYTHONPATH=/app
 
-# Install Playwright browsers
-RUN playwright install chromium
+# Health check endpoint
+EXPOSE 8080
 
-# Environment variables
-ENV PYTHONUNBUFFERED=1
-ENV SCRAPY_SETTINGS_MODULE=labelsquor_crawlers.settings
-
-# Expose Scrapyd port (if using Scrapyd)
-EXPOSE 6800
-
-# Default command - can be overridden
-CMD ["scrapy", "list"]
+# Run the crawler service
+CMD ["python", "crawler_service.py"]

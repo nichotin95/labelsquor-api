@@ -1,0 +1,32 @@
+{
+  "enabled": true,
+  "download_delay": 3.0,
+  "delay_randomization": 2.0,
+  "proxy_probability": 0.8,
+  "force_proxy": false,
+  "proxy_type": "rotating",
+  "proxy_providers": ["premium", "residential"],
+  "proxy_timeout": 60,
+  "proxy_retry_count": 3,
+  "retry_times": 3,
+  "retry_codes": [503, 500, 502, 504],
+  "backoff_base": 5,
+  "backoff_max": 300,
+  "blocking_patterns": [
+    "sorry, we just need to make sure you're not a robot",
+    "enter the characters you see below",
+    "to discuss automated access",
+    "amazon captcha",
+    "api-services-support@amazon.com"
+  ],
+  "custom_headers": {
+    "Pragma": "no-cache",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none"
+  },
+  "concurrent_requests": 1,
+  "autothrottle_target": 0.5,
+  "cookies_enabled": true,
+  "session_persistence": true
+}

@@ -1,81 +1,217 @@
-name: Crawl Products
+name: Product Crawler
 
 on:
-  schedule:
-    # Run every day at 2 AM UTC (7:30 AM IST)
-    - cron: '0 2 * * *'
+  # Manual trigger for running crawlers
   workflow_dispatch:
     inputs:
-      spider:
-        description: 'Spider to run (bigbasket, blinkit, zepto, all)'
+      retailer:
+        description: 'Retailer to crawl'
         required: true
-        default: 'all'
         type: choice
         options:
-          - all
           - bigbasket
+          - amazon
+          - flipkart
           - blinkit
           - zepto
-          - amazon_in
+          - all
+      search_terms:
+        description: 'Comma-separated search terms (e.g., maggi,lays,amul)'
+        required: false
+        default: 'maggi,lays,amul,britannia,parle'
+      max_products:
+        description: 'Maximum products to crawl'
+        required: false
+        default: '100'
+  
+  # Scheduled runs
+  schedule:
+    # Run daily at 2 AM UTC (7:30 AM IST)
+    - cron: '0 2 * * *'
+  
+  # Run on push to test
+  push:
+    branches:
+      - main
+    paths:
+      - 'crawlers/**'
+      - '.github/workflows/crawl-products.yml'
 
 jobs:
   crawl:
     runs-on: ubuntu-latest
-    
     strategy:
       matrix:
-        spider: ${{ fromJson(github.event_name == 'workflow_dispatch' && github.event.inputs.spider != 'all' && format('["{0}"]', github.event.inputs.spider) || '["bigbasket", "blinkit", "zepto"]') }}
+        python-version: [3.9]
     
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      
-      - name: Cache pip packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('crawlers/requirements.txt') }}
-      
-      - name: Install dependencies
-        run: |
-          cd crawlers
-          pip install -r requirements.txt
-          playwright install chromium
-      
-      - name: Run spider
-        env:
-          LABELSQUOR_API_URL: ${{ secrets.LABELSQUOR_API_URL }}
-          LABELSQUOR_API_KEY: ${{ secrets.LABELSQUOR_API_KEY }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          CLOUD_STORAGE_TYPE: s3
-          CLOUD_STORAGE_BUCKET: labelsquor-crawl-data
-        run: |
-          cd crawlers
-          scrapy crawl ${{ matrix.spider }} \
-            -L INFO \
-            -s CLOSESPIDER_ITEMCOUNT=100 \
-            -s JOBDIR=jobs/${{ matrix.spider }}
-      
-      - name: Upload logs
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: crawl-logs-${{ matrix.spider }}
-          path: crawlers/logs/
-      
-      - name: Notify on failure
-        if: failure()
-        uses: actions/github-script@v6
-        with:
-          script: |
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: `Crawl failed for ${context.payload.inputs?.spider || 'scheduled crawl'}`,
-              body: `The crawl job failed. Check the [workflow run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`
-            })
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache pip packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        cd crawlers
+        pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install scrapy-playwright
+        playwright install chromium
+        playwright install-deps
+    
+    - name: Set up environment
+      env:
+        LABELSQUOR_API_URL: ${{ secrets.LABELSQUOR_API_URL || 'https://api.labelsquor.com' }}
+        LABELSQUOR_API_KEY: ${{ secrets.LABELSQUOR_API_KEY }}
+      run: |
+        echo "LABELSQUOR_API_URL=$LABELSQUOR_API_URL" >> $GITHUB_ENV
+        echo "LABELSQUOR_API_KEY=$LABELSQUOR_API_KEY" >> $GITHUB_ENV
+    
+    - name: Run crawler
+      env:
+        PYTHONPATH: ${{ github.workspace }}/crawlers
+      run: |
+        cd crawlers
+        
+        # Determine which retailer to crawl
+        RETAILER="${{ github.event.inputs.retailer || 'bigbasket' }}"
+        SEARCH_TERMS="${{ github.event.inputs.search_terms || 'maggi,lays,amul' }}"
+        MAX_PRODUCTS="${{ github.event.inputs.max_products || '100' }}"
+        
+        # Use the simple parser for BigBasket (no Scrapy needed)
+        if [ "$RETAILER" = "bigbasket" ] || [ "$RETAILER" = "all" ]; then
+          echo "Running BigBasket crawler..."
+          python -c "
+import sys
+sys.path.insert(0, '.')
+from simple_bigbasket_parser import SimpleBigBasketParser
+import json
+import os
+import requests
+
+parser = SimpleBigBasketParser()
+all_products = []
+search_terms = '$SEARCH_TERMS'.split(',')
+
+for term in search_terms:
+    products = parser.search_products(term.strip())
+    all_products.extend(products[:int('$MAX_PRODUCTS')//len(search_terms)])
+
+# Save results
+with open('bigbasket_results.json', 'w') as f:
+    json.dump(all_products, f, indent=2)
+
+print(f'Crawled {len(all_products)} products')
+
+# Send to API if configured
+api_url = os.environ.get('LABELSQUOR_API_URL')
+api_key = os.environ.get('LABELSQUOR_API_KEY')
+
+if api_url and api_key:
+    headers = {'Authorization': f'Bearer {api_key}'}
+    for product in all_products:
+        try:
+            response = requests.post(
+                f'{api_url}/v1/crawler/products',
+                json=product,
+                headers=headers
+            )
+            if response.status_code == 200:
+                print(f'Sent {product[\"name\"]} to API')
+        except Exception as e:
+            print(f'Failed to send product: {e}')
+"
+        fi
+        
+        # Run Scrapy spiders for other retailers
+        if [ "$RETAILER" != "bigbasket" ]; then
+          if [ "$RETAILER" = "all" ]; then
+            # Run all spiders
+            for spider in bigbasket_discovery amazon flipkart blinkit zepto; do
+              echo "Running $spider spider..."
+              scrapy crawl $spider \
+                -a search_terms="$SEARCH_TERMS" \
+                -a max_products="$MAX_PRODUCTS" \
+                -L INFO \
+                || echo "Spider $spider failed, continuing..."
+            done
+          else
+            # Run specific spider
+            echo "Running $RETAILER spider..."
+            scrapy crawl $RETAILER \
+              -a search_terms="$SEARCH_TERMS" \
+              -a max_products="$MAX_PRODUCTS" \
+              -L INFO
+          fi
+        fi
+    
+    - name: Upload crawl results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: crawl-results-${{ github.run_id }}
+        path: |
+          crawlers/*.json
+          crawlers/*.csv
+          crawlers/logs/
+        retention-days: 7
+    
+    - name: Send notification
+      if: failure()
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        text: 'Product crawler failed!'
+        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+      continue-on-error: true
+
+  analyze-results:
+    needs: crawl
+    runs-on: ubuntu-latest
+    if: success()
+    
+    steps:
+    - name: Download results
+      uses: actions/download-artifact@v3
+      with:
+        name: crawl-results-${{ github.run_id }}
+    
+    - name: Analyze results
+      run: |
+        echo "Analyzing crawl results..."
+        
+        # Count products
+        if [ -f bigbasket_results.json ]; then
+          PRODUCT_COUNT=$(jq 'length' bigbasket_results.json)
+          echo "Found $PRODUCT_COUNT products from BigBasket"
+          
+          # Show sample
+          echo "Sample products:"
+          jq '.[0:3]' bigbasket_results.json
+        fi
+    
+    - name: Create summary
+      run: |
+        echo "## Crawl Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "- **Run ID**: ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Retailer**: ${{ github.event.inputs.retailer || 'bigbasket' }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Search Terms**: ${{ github.event.inputs.search_terms || 'default' }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ -f bigbasket_results.json ]; then
+          PRODUCT_COUNT=$(jq 'length' bigbasket_results.json)
+          echo "### Results" >> $GITHUB_STEP_SUMMARY
+          echo "- Total products: $PRODUCT_COUNT" >> $GITHUB_STEP_SUMMARY
+        fi

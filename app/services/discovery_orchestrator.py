@@ -444,11 +444,7 @@ class DiscoveryOrchestrator:
         logger.info(f"Executing task: {task.task_type} for {task.retailer_slug}")
 
         # Import the crawler parser
-        import os
-        import sys
-
-        sys.path.append(os.path.join(os.path.dirname(__file__), "../../crawlers"))
-        from simple_bigbasket_parser import SimpleBigBasketParser
+        from app.services.simple_bigbasket_parser import SimpleBigBasketParser
 
         products = []
 

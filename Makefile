@@ -31,6 +31,8 @@ help:
 	@echo ""
 	@echo "Deployment:"
 	@echo "  make docker       - Build Docker image"
+	@echo "  make deploy       - Deploy main to production (Google Cloud)"
+	@echo "  make deploy-status - Check deployment status"
 	@echo "  make clean        - Clean temporary files"
 
 # Installation commands
@@ -299,3 +301,12 @@ deps-update:
 	@echo "⬆️  Updating dependencies..."
 	pip install --upgrade pip setuptools wheel
 	pip install --upgrade -r requirements/base.txt
+
+# Deployment to production
+deploy:
+	@echo "🚀 Deploying to production..."
+	@./deploy-to-production.sh
+
+deploy-status:
+	@echo "📊 Checking deployment status..."
+	@gh run list --workflow=deploy-to-gcp.yml --branch production --limit 5

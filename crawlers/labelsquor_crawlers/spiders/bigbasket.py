@@ -7,16 +7,17 @@ from urllib.parse import urljoin
 import json
 
 from labelsquor_crawlers.items import ProductItem
+from .base import CategoryBasedSpider
 
 
-class BigBasketSpider(scrapy.Spider):
+class BigBasketSpider(CategoryBasedSpider):
     name = 'bigbasket'
     allowed_domains = ['bigbasket.com']
+    retailer = 'bigbasket'  # For anti-block strategy
     
-    # Custom settings for this spider
+    # Custom settings will be merged with strategy settings
     custom_settings = {
-        'DOWNLOAD_DELAY': 2,  # Be extra polite with BigBasket
-        'CONCURRENT_REQUESTS_PER_DOMAIN': 1,
+        'USER_AGENT': None,  # Will use strategy user agents
     }
     
     # Starting categories

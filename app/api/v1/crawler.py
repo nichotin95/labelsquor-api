@@ -15,7 +15,7 @@ from app.api.deps import get_current_user
 from app.core.config import settings
 from app.core.database import get_session, AsyncSessionLocal
 from app.core.logging import log
-from app.models import CrawlSession, Product, Retailer
+from app.models import CrawlSession, Product, Retailer, SourcePage
 from app.services.ai_pipeline_service import AIPipelineService
 from app.services.discovery_orchestrator import DiscoveryOrchestrator
 from app.services.product_consolidator import ProductConsolidator
@@ -244,6 +244,120 @@ async def search_and_analyze_product(
     )
 
 
+@router.post("/products")
+async def receive_crawler_product(
+    product_data: Dict[str, Any],
+    background_tasks: BackgroundTasks,
+    db: AsyncSession = Depends(get_session),
+    pipeline: AIPipelineService = Depends(get_pipeline),
+):
+    """
+    Receive product data from Scrapy crawlers
+    
+    This endpoint is called by the Scrapy pipeline to submit crawled products.
+    The anti-blocking strategies work transparently - the crawlers handle all
+    the proxy rotation, user agent switching, etc. before sending clean data here.
+    """
+    try:
+        # Extract source page data
+        source_page_data = product_data.get("source_page", {})
+        
+        # Create or update source page
+        source_page = SourcePage(
+            url=source_page_data.get("url"),
+            retailer_code=source_page_data.get("retailer"),
+            title=source_page_data.get("title"),
+            content_hash=source_page_data.get("content_hash"),
+            extracted_data=source_page_data.get("extracted_data", {}),
+            crawl_session_id=source_page_data.get("crawl_session_id"),
+            crawled_at=datetime.utcnow()
+        )
+        
+        db.add(source_page)
+        await db.commit()
+        await db.refresh(source_page)
+        
+        # Queue for AI processing
+        queue_id = await pipeline.process_crawler_result(
+            crawler_data=source_page_data.get("extracted_data", {}),
+            force_reanalysis=False
+        )
+        
+        return {
+            "product_id": source_page.source_page_id,
+            "queue_id": queue_id,
+            "status": "queued",
+            "message": "Product queued for analysis"
+        }
+        
+    except Exception as e:
+        log.error(f"Failed to process crawler product: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/sessions")
+async def create_crawler_session(
+    session_data: Dict[str, Any],
+    db: AsyncSession = Depends(get_session),
+):
+    """Create a new crawler session"""
+    retailer_code = session_data.get("retailer")
+    
+    # Get retailer
+    result = await db.execute(
+        select(Retailer).where(Retailer.code == retailer_code)
+    )
+    retailer = result.scalar_one_or_none()
+    
+    if not retailer:
+        raise HTTPException(status_code=404, detail=f"Retailer {retailer_code} not found")
+    
+    # Create session
+    session = CrawlSession(
+        retailer_id=retailer.retailer_id,
+        status="running",
+        metadata=session_data
+    )
+    
+    db.add(session)
+    await db.commit()
+    await db.refresh(session)
+    
+    return {
+        "session_id": session.session_id,
+        "status": "created"
+    }
+
+
+@router.patch("/sessions/{session_id}")
+async def update_crawler_session(
+    session_id: UUID,
+    update_data: Dict[str, Any],
+    db: AsyncSession = Depends(get_session),
+):
+    """Update crawler session status"""
+    result = await db.execute(
+        select(CrawlSession).where(CrawlSession.session_id == session_id)
+    )
+    session = result.scalar_one_or_none()
+    
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    # Update status
+    if "status" in update_data:
+        session.status = update_data["status"]
+        if update_data["status"] == "completed":
+            session.completed_at = datetime.utcnow()
+    
+    if "error" in update_data:
+        session.error_message = update_data["error"]
+    
+    await db.commit()
+    
+    return {"status": "updated"}
+
+
 @router.get("/status/{session_id}", response_model=CrawlStatusResponse)
 async def get_crawl_status(session_id: UUID, db: AsyncSession = Depends(get_session)):
     """Get the status of a crawl session"""
@@ -387,6 +501,43 @@ async def get_recent_products(
 
 
 # Background processing functions
+async def _call_external_crawler(
+    retailer: str,
+    search_terms: List[str],
+    max_products: int
+) -> List[Dict[str, Any]]:
+    """Call external crawler service with proxy rotation"""
+    import httpx
+    import os
+    
+    crawler_url = os.environ.get("CRAWLER_SERVICE_URL", "https://labelsquor-crawler-143169591686.us-central1.run.app")
+    
+    try:
+        log.info(f"Calling external crawler at {crawler_url} for {retailer}")
+        
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            response = await client.post(
+                f"{crawler_url}/crawl/simple",
+                json={
+                    "retailer": retailer,
+                    "search_terms": search_terms,
+                    "max_products": max_products
+                }
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                log.info(f"External crawler returned {data.get('products_found', 0)} products")
+                return data.get("sample", [])
+            else:
+                log.error(f"External crawler failed: {response.status_code}")
+                return []
+                
+    except Exception as e:
+        log.error(f"External crawler error: {str(e)}")
+        return []
+
+
 async def _process_category_crawl(
     session_ids: List[UUID],
     request: CategoryCrawlRequest,
@@ -395,25 +546,62 @@ async def _process_category_crawl(
     pipeline: AIPipelineService,
 ):
     """Process category crawl in background"""
+    import os
+    
+    use_external_crawler = os.environ.get("USE_EXTERNAL_CRAWLER", "false").lower() == "true"
+    
     try:
-        log.info(f"Starting category crawl for '{request.category}'")
+        log.info(f"Starting category crawl for '{request.category}' (external_crawler={use_external_crawler})")
 
-        # Generate discovery tasks for each retailer
-        tasks = []
-        for retailer in request.retailers:
-            task = await orchestrator.generate_category_tasks(
-                category=request.category, retailer=retailer, max_products=request.max_products
-            )
-            tasks.extend(task)
-
-        log.info(f"Generated {len(tasks)} discovery tasks")
-
-        # Process tasks and collect products
+        # Check if we should use external crawler
         all_products = []
-        for task in tasks:
-            products = await orchestrator.execute_task(task)
-            log.info(f"Task returned {len(products)} products")
-            all_products.extend(products)
+        
+        if use_external_crawler and request.category in ["snacks", "beverages", "grocery"]:
+            # Use external crawler for supported categories
+            for retailer in request.retailers:
+                if retailer == "bigbasket":  # Currently only BigBasket supported
+                    # Convert category to search terms
+                    search_terms = []
+                    if request.category == "snacks":
+                        search_terms = ["chips", "namkeen", "biscuit", "chocolate"]
+                    elif request.category == "beverages":
+                        search_terms = ["juice", "cola", "energy drink", "coffee"]
+                    elif request.category == "grocery":
+                        search_terms = ["atta", "rice", "dal", "oil"]
+                    else:
+                        search_terms = [request.category]
+                    
+                    log.info(f"Using external crawler for {retailer} with terms: {search_terms}")
+                    products = await _call_external_crawler(
+                        retailer=retailer,
+                        search_terms=search_terms,
+                        max_products=request.max_products
+                    )
+                    all_products.extend(products)
+                else:
+                    # Fall back to local crawler for other retailers
+                    task = await orchestrator.generate_category_tasks(
+                        category=request.category, retailer=retailer, max_products=request.max_products
+                    )
+                    for t in task:
+                        products = await orchestrator.execute_task(t)
+                        all_products.extend(products)
+        else:
+            # Use local crawler (original logic)
+            tasks = []
+            for retailer in request.retailers:
+                task = await orchestrator.generate_category_tasks(
+                    category=request.category, retailer=retailer, max_products=request.max_products
+                )
+                tasks.extend(task)
+
+            log.info(f"Generated {len(tasks)} discovery tasks")
+
+            # Process tasks and collect products
+            for task in tasks:
+                products = await orchestrator.execute_task(task)
+                log.info(f"Task returned {len(products)} products")
+                all_products.extend(products)
 
         log.info(f"Total products collected: {len(all_products)}")
 
