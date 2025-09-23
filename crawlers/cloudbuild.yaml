@@ -1,0 +1,36 @@
+steps:
+  # Build the crawler image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/labelsquor-crawler', '.']
+    dir: 'crawlers'
+
+  # Push to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/labelsquor-crawler']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'labelsquor-crawler'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/labelsquor-crawler'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '2Gi'
+      - '--cpu'
+      - '2'
+      - '--timeout'
+      - '900'
+      - '--max-instances'
+      - '5'
+      - '--set-env-vars'
+      - 'LABELSQUOR_API_URL=https://labelsquor-api-u7wurf5zba-uc.a.run.app,SCRAPY_SETTINGS_MODULE=labelsquor_crawlers.settings_gcp'
+
+timeout: 1200s
