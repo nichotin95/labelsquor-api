@@ -551,15 +551,10 @@ class ConsolidationPipeline:
     async def search_product(self, product_name: str, brand: Optional[str], retailer: str) -> List[Dict[str, Any]]:
         """Search for a product on a specific retailer"""
         # Import the appropriate parser
-        import os
-        import sys
-
-        sys.path.append(os.path.join(os.path.dirname(__file__), "../../crawlers"))
-
         results = []
 
         if retailer == "bigbasket":
-            from simple_bigbasket_parser import SimpleBigBasketParser
+            from app.services.simple_bigbasket_parser import SimpleBigBasketParser
 
             parser = SimpleBigBasketParser()
 
