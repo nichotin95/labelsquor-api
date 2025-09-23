@@ -1,7 +1,7 @@
 name: Product Crawler
 
 on:
-  # Manual trigger
+  # Manual trigger for running crawlers
   workflow_dispatch:
     inputs:
       retailer:
