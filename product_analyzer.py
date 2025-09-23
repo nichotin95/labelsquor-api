@@ -58,7 +58,7 @@ class ProductAnalyzer:
     def __init__(self, api_key: str, usage_file: str = 'usage_tracking.json'):
         # Initialize new genai client
         self.client = genai.Client(api_key=api_key)
-        self.model_id = "gemini-2.5-flash"
+        self.model_id = "gemini-2.0-flash-exp"
         self.usage_file = usage_file
         self.usage = self._load_usage()
         
