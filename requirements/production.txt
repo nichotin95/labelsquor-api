@@ -6,8 +6,8 @@
 # Production server
 gunicorn==21.2.0
 
-# PostgreSQL connection pooling
-pgbouncer-python==0.1.0
+# PostgreSQL connection pooling - removed non-existent package
+# pgbouncer-python==0.1.0  # This package doesn't exist on PyPI
 
 # APM and monitoring
 opentelemetry-api==1.23.0
@@ -20,7 +20,5 @@ secure==0.3.0
 # Request ID tracking
 asgi-correlation-id==4.3.1
 
-# Rate limiting and security
-slowapi==0.1.9
-sentry-sdk[fastapi]==1.32.0
-prometheus-fastapi-instrumentator==6.1.0
+# These are already included in base.txt:
+# slowapi, sentry-sdk, prometheus-fastapi-instrumentator
