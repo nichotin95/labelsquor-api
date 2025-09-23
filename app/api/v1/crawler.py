@@ -15,7 +15,7 @@ from app.api.deps import get_current_user
 from app.core.config import settings
 from app.core.database import get_session, AsyncSessionLocal
 from app.core.logging import log
-from app.models import CrawlSession, Product, Retailer
+from app.models import CrawlSession, Product, Retailer, SourcePage
 from app.services.ai_pipeline_service import AIPipelineService
 from app.services.discovery_orchestrator import DiscoveryOrchestrator
 from app.services.product_consolidator import ProductConsolidator
@@ -242,6 +242,120 @@ async def search_and_analyze_product(
         analysis_status="processing",
         consolidated_from=0,
     )
+
+
+@router.post("/products")
+async def receive_crawler_product(
+    product_data: Dict[str, Any],
+    background_tasks: BackgroundTasks,
+    db: AsyncSession = Depends(get_session),
+    pipeline: AIPipelineService = Depends(get_pipeline),
+):
+    """
+    Receive product data from Scrapy crawlers
+    
+    This endpoint is called by the Scrapy pipeline to submit crawled products.
+    The anti-blocking strategies work transparently - the crawlers handle all
+    the proxy rotation, user agent switching, etc. before sending clean data here.
+    """
+    try:
+        # Extract source page data
+        source_page_data = product_data.get("source_page", {})
+        
+        # Create or update source page
+        source_page = SourcePage(
+            url=source_page_data.get("url"),
+            retailer_code=source_page_data.get("retailer"),
+            title=source_page_data.get("title"),
+            content_hash=source_page_data.get("content_hash"),
+            extracted_data=source_page_data.get("extracted_data", {}),
+            crawl_session_id=source_page_data.get("crawl_session_id"),
+            crawled_at=datetime.utcnow()
+        )
+        
+        db.add(source_page)
+        await db.commit()
+        await db.refresh(source_page)
+        
+        # Queue for AI processing
+        queue_id = await pipeline.process_crawler_result(
+            crawler_data=source_page_data.get("extracted_data", {}),
+            force_reanalysis=False
+        )
+        
+        return {
+            "product_id": source_page.source_page_id,
+            "queue_id": queue_id,
+            "status": "queued",
+            "message": "Product queued for analysis"
+        }
+        
+    except Exception as e:
+        log.error(f"Failed to process crawler product: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/sessions")
+async def create_crawler_session(
+    session_data: Dict[str, Any],
+    db: AsyncSession = Depends(get_session),
+):
+    """Create a new crawler session"""
+    retailer_code = session_data.get("retailer")
+    
+    # Get retailer
+    result = await db.execute(
+        select(Retailer).where(Retailer.code == retailer_code)
+    )
+    retailer = result.scalar_one_or_none()
+    
+    if not retailer:
+        raise HTTPException(status_code=404, detail=f"Retailer {retailer_code} not found")
+    
+    # Create session
+    session = CrawlSession(
+        retailer_id=retailer.retailer_id,
+        status="running",
+        metadata=session_data
+    )
+    
+    db.add(session)
+    await db.commit()
+    await db.refresh(session)
+    
+    return {
+        "session_id": session.session_id,
+        "status": "created"
+    }
+
+
+@router.patch("/sessions/{session_id}")
+async def update_crawler_session(
+    session_id: UUID,
+    update_data: Dict[str, Any],
+    db: AsyncSession = Depends(get_session),
+):
+    """Update crawler session status"""
+    result = await db.execute(
+        select(CrawlSession).where(CrawlSession.session_id == session_id)
+    )
+    session = result.scalar_one_or_none()
+    
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    # Update status
+    if "status" in update_data:
+        session.status = update_data["status"]
+        if update_data["status"] == "completed":
+            session.completed_at = datetime.utcnow()
+    
+    if "error" in update_data:
+        session.error_message = update_data["error"]
+    
+    await db.commit()
+    
+    return {"status": "updated"}
 
 
 @router.get("/status/{session_id}", response_model=CrawlStatusResponse)

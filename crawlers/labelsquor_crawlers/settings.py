@@ -30,6 +30,21 @@ ITEM_PIPELINES = {
     'labelsquor_crawlers.pipelines.LabelSquorAPIPipeline': 300,
 }
 
+# Configure middlewares for anti-blocking
+DOWNLOADER_MIDDLEWARES = {
+    # Disable default user agent middleware
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    
+    # Enable the new generic anti-block middleware
+    'labelsquor_crawlers.middlewares_v2.GenericAntiBlockMiddleware': 400,
+    'labelsquor_crawlers.middlewares_v2.SmartRetryMiddleware': 550,
+    'labelsquor_crawlers.middlewares_v2.AdaptiveDelayMiddleware': 600,
+    
+    # Legacy middlewares (can be removed once all spiders are updated)
+    # 'labelsquor_crawlers.middlewares.RotatingUserAgentMiddleware': 400,
+    # 'labelsquor_crawlers.middlewares.CloudflareBypassMiddleware': 450,
+}
+
 # Retry configuration
 RETRY_TIMES = 3
 RETRY_HTTP_CODES = [500, 502, 503, 504, 408, 429]

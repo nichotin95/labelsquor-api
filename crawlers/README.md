@@ -1,6 +1,6 @@
 # LabelSquor Scrapy Crawlers
 
-This directory contains Scrapy spiders for crawling Indian e-commerce sites.
+This directory contains Scrapy spiders for crawling Indian e-commerce sites with advanced anti-blocking measures for cloud deployments.
 
 ## Architecture
 
@@ -77,3 +77,26 @@ curl http://your-scrapyd:6800/schedule.json \
 - **Data Pipeline**: Sends directly to LabelSquor API
 - **Cloud Storage**: Saves HTML/images to S3/GCS
 - **Monitoring**: Scrapy stats and error tracking
+- **Anti-Blocking**: Advanced measures for cloud deployments
+- **Free Proxy Rotation**: Automatic proxy management
+- **Retailer-Specific Strategies**: Custom handling per retailer
+
+## Anti-Blocking Solutions (NEW!)
+
+**Problem**: Retailers block cloud IPs (GCP, AWS, etc.)
+
+**Free Solutions**:
+1. **GitHub Actions** - Run from GitHub's trusted IPs
+2. **Free Proxy Rotation** - Automatic proxy management
+3. **Smart Detection** - Auto-adapts to environment
+
+**Quick Start**:
+```bash
+# Auto-detects environment and applies appropriate strategy
+python run_crawler.py bigbasket
+
+# Or use GitHub Actions (most reliable)
+gh workflow run crawl-products -f retailer=bigbasket
+```
+
+See [ANTIBLOCK_GUIDE.md](ANTIBLOCK_GUIDE.md) for details.

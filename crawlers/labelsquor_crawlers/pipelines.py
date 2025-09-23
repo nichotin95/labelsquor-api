@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Dict, Any
 import hashlib
 import json
-from tenacity import retry, stop_after_attempt, wait_exponential
+import asyncio
 
 from scrapy import Spider
 from scrapy.exceptions import DropItem
@@ -74,16 +74,15 @@ class LabelSquorAPIPipeline:
         except Exception as e:
             spider.logger.error(f"Failed to create session: {e}")
     
-    @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10))
     async def process_item(self, item, spider: Spider):
-        """Send item to API"""
+        """Send item to API with retry logic"""
         adapter = ItemAdapter(item)
         
         # Prepare data for API
         product_data = {
             "source_page": {
                 "url": adapter['url'],
-                "retailer": adapter['retailer'],
+                "retailer": adapter.get('retailer', spider.name),
                 "title": adapter.get('name'),
                 "extracted_data": {
                     "name": adapter.get('name'),
@@ -114,31 +113,50 @@ class LabelSquorAPIPipeline:
         
         product_data['source_page']['content_hash'] = content_hash
         
-        try:
-            # Send to API
-            response = await self.client.post(
-                f"{self.api_url}/api/v1/crawler/products",
-                json=product_data
-            )
-            response.raise_for_status()
-            
-            result = response.json()
-            spider.logger.info(f"Sent product to API: {result.get('product_id')}")
-            
-            # Add API response to item for downstream pipelines
-            adapter['api_product_id'] = result.get('product_id')
-            adapter['api_queue_id'] = result.get('queue_id')
-            
-        except httpx.HTTPStatusError as e:
-            if e.response.status_code == 409:
-                # Duplicate, not an error
-                spider.logger.debug(f"Product already exists: {adapter['url']}")
-            else:
-                spider.logger.error(f"API error: {e.response.text}")
-                raise
-        except Exception as e:
-            spider.logger.error(f"Failed to send to API: {e}")
-            raise
+        # Retry logic
+        max_retries = 3
+        retry_count = 0
+        
+        while retry_count < max_retries:
+            try:
+                # Send to API
+                response = await self.client.post(
+                    f"{self.api_url}/api/v1/crawler/products",
+                    json=product_data
+                )
+                response.raise_for_status()
+                
+                result = response.json()
+                spider.logger.info(f"Sent product to API: {result.get('product_id')}")
+                
+                # Add API response to item for downstream pipelines
+                adapter['api_product_id'] = result.get('product_id')
+                adapter['api_queue_id'] = result.get('queue_id')
+                
+                # Success, break the retry loop
+                break
+                
+            except httpx.HTTPStatusError as e:
+                if e.response.status_code == 409:
+                    # Duplicate, not an error
+                    spider.logger.debug(f"Product already exists: {adapter['url']}")
+                    break
+                else:
+                    spider.logger.error(f"API error: {e.response.text}")
+                    retry_count += 1
+                    if retry_count >= max_retries:
+                        raise
+                    else:
+                        # Wait before retry
+                        await asyncio.sleep(2 ** retry_count)
+                        
+            except Exception as e:
+                spider.logger.error(f"Failed to send to API: {e}")
+                retry_count += 1
+                if retry_count >= max_retries:
+                    raise
+                else:
+                    await asyncio.sleep(2 ** retry_count)
         
         return item
     
