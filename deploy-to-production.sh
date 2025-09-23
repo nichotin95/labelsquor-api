@@ -67,13 +67,9 @@ git checkout origin/production -- GITHUB_DEPLOYMENT_SETUP.md 2>/dev/null || true
 
 # Handle requirements carefully
 echo ""
-echo "📋 Merging requirements..."
-# Start with production requirements
-git checkout origin/production -- requirements/ 2>/dev/null || true
-# Add google-genai if missing
-if ! grep -q "google-genai" requirements/base.txt; then
-    echo "google-genai==1.37.0" >> requirements/base.txt
-fi
+echo "📋 Using requirements from main..."
+# Keep requirements from main (they're already updated)
+git checkout main -- requirements/
 
 # Stage all changes
 git add -A
