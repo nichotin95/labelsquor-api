@@ -79,6 +79,83 @@ async def test_proxy():
     }
 
 
+@app.get("/proxy-demo")
+async def proxy_demo():
+    """Demonstrate proxy working with actual request"""
+    import httpx
+    import requests
+    
+    # Get a proxy from free sources
+    proxy_urls = [
+        'https://api.proxyscrape.com/v2/?request=get&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all&limit=5',
+    ]
+    
+    proxies = []
+    for url in proxy_urls:
+        try:
+            resp = requests.get(url, timeout=5)
+            if resp.status_code == 200:
+                for line in resp.text.strip().split('\n')[:5]:
+                    if ':' in line:
+                        proxies.append(f"http://{line.strip()}")
+        except:
+            pass
+    
+    results = {
+        "direct_test": {},
+        "proxy_tests": [],
+        "working_proxies": []
+    }
+    
+    # Test direct
+    test_url = "https://httpbin.org/ip"
+    try:
+        async with httpx.AsyncClient() as client:
+            resp = await client.get(test_url, timeout=5)
+            results["direct_test"] = {
+                "status": resp.status_code,
+                "ip": resp.json().get("origin", "Unknown")
+            }
+    except Exception as e:
+        results["direct_test"] = {"error": str(e)}
+    
+    # Test with proxies
+    for proxy in proxies[:3]:  # Test first 3
+        try:
+            async with httpx.AsyncClient(proxies={"http://": proxy, "https://": proxy}) as client:
+                resp = await client.get(test_url, timeout=5)
+                proxy_result = {
+                    "proxy": proxy,
+                    "status": resp.status_code,
+                    "ip": resp.json().get("origin", "Unknown")
+                }
+                results["proxy_tests"].append(proxy_result)
+                if resp.status_code == 200:
+                    results["working_proxies"].append(proxy)
+        except Exception as e:
+            results["proxy_tests"].append({
+                "proxy": proxy,
+                "error": str(e)[:50]
+            })
+    
+    # Test BigBasket with working proxy
+    if results["working_proxies"]:
+        bb_url = "https://www.bigbasket.com/api/v3.0/header/get-header-config/"
+        proxy = results["working_proxies"][0]
+        try:
+            async with httpx.AsyncClient(proxies={"http://": proxy, "https://": proxy}) as client:
+                resp = await client.get(bb_url, timeout=10)
+                results["bigbasket_with_proxy"] = {
+                    "proxy_used": proxy,
+                    "status": resp.status_code,
+                    "success": resp.status_code == 200
+                }
+        except Exception as e:
+            results["bigbasket_with_proxy"] = {"error": str(e)[:100]}
+    
+    return results
+
+
 @app.post("/crawl", response_model=CrawlResponse)
 async def trigger_crawl(request: CrawlRequest, background_tasks: BackgroundTasks):
     """Trigger a crawl with anti-blocking measures"""
@@ -106,10 +183,14 @@ async def trigger_crawl(request: CrawlRequest, background_tasks: BackgroundTasks
 def run_crawler(task_id: str, retailer: str, search_terms: List[str], max_products: int):
     """Run the crawler with proxy rotation"""
     
+    print(f"🕷️ Starting crawler task {task_id} for {retailer}")
+    print(f"   Search terms: {search_terms}")
+    print(f"   Max products: {max_products}")
+    
     # Set API URL from environment or default
     api_url = os.environ.get("LABELSQUOR_API_URL", "https://labelsquor-api-u7wurf5zba-uc.a.run.app")
     
-    # Use the run_crawler.py script
+    # Always use subprocess to avoid reactor conflicts in async environment
     cmd = [
         "python", "run_crawler.py",
         retailer,
@@ -117,75 +198,134 @@ def run_crawler(task_id: str, retailer: str, search_terms: List[str], max_produc
         "--max-products", str(max_products)
     ]
     
-    # Set environment
     env = os.environ.copy()
     env["LABELSQUOR_API_URL"] = api_url
     
     try:
-        # Run crawler
+        print(f"📡 Running command: {' '.join(cmd)}")
+        print(f"🔧 Environment: SCRAPY_SETTINGS_MODULE={env.get('SCRAPY_SETTINGS_MODULE', 'not set')}")
+        
         result = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
-            env=env
+            env=env,
+            cwd="/app"  # Ensure correct working directory
         )
         
         if result.returncode == 0:
-            print(f"Task {task_id} completed successfully")
-            print(f"Output: {result.stdout}")
+            print(f"✅ Task {task_id} completed successfully")
+            print(f"Output:\n{result.stdout}")
+            
+            # Check if any products were found
+            if "Found:" in result.stdout:
+                found_count = result.stdout.count("Found:")
+                print(f"📦 Products found: {found_count}")
+            else:
+                print("⚠️ No products found - proxy may not be working")
         else:
-            print(f"Task {task_id} failed: {result.stderr}")
+            print(f"❌ Task {task_id} failed with code {result.returncode}")
+            print(f"Error:\n{result.stderr}")
             
     except Exception as e:
-        print(f"Task {task_id} error: {str(e)}")
+        print(f"❌ Task {task_id} error: {type(e).__name__}: {str(e)}")
 
 
 @app.post("/crawl/simple", response_model=dict)
 async def simple_crawl(request: CrawlRequest):
-    """Direct crawl using simple parser (immediate response)"""
-    
-    from simple_bigbasket_parser import SimpleBigBasketParser
-    import httpx
+    """
+    Synchronous crawl that returns results immediately
+    Uses subprocess to run crawler with proxy support
+    """
+    import subprocess
+    import json
     
     if request.retailer != "bigbasket":
-        return {"error": "Only BigBasket supported for simple crawl"}
+        return {"error": "Only BigBasket supported currently", "products_found": 0, "sample": []}
     
-    parser = SimpleBigBasketParser()
-    all_products = []
+    # Run crawler synchronously
+    cmd = [
+        "python", "run_crawler.py",
+        request.retailer,
+        "--search-terms", ",".join(request.search_terms),
+        "--max-products", str(request.max_products),
+        "--output-format", "json"  # Request JSON output
+    ]
     
-    for term in request.search_terms:
-        products = parser.search_products(term)
-        all_products.extend(products[:request.max_products // len(request.search_terms)])
-    
-    # Send to API
+    env = os.environ.copy()
     api_url = os.environ.get("LABELSQUOR_API_URL", "https://labelsquor-api-u7wurf5zba-uc.a.run.app")
-    sent_count = 0
+    env["LABELSQUOR_API_URL"] = api_url
     
-    async with httpx.AsyncClient() as client:
-        for product in all_products[:request.max_products]:
+    print(f"🕷️ Running simple crawl for {request.retailer}")
+    print(f"   Command: {' '.join(cmd)}")
+    
+    try:
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            env=env,
+            cwd="/app",
+            timeout=30  # 30 second timeout
+        )
+        
+        if result.returncode == 0:
+            # Parse output to find JSON results
+            output_lines = result.stdout.strip().split('\n')
+            products = []
+            
+            for line in output_lines:
+                if line.startswith('✅ Found:'):
+                    # Extract product info from output
+                    parts = line.split(' - ')
+                    if len(parts) >= 2:
+                        name = parts[0].replace('✅ Found:', '').strip()
+                        price = parts[1].strip() if len(parts) > 1 else "₹0"
+                        products.append({
+                            "name": name,
+                            "price": price,
+                            "retailer": request.retailer,
+                            "url": f"https://www.bigbasket.com/pd/{name.lower().replace(' ', '-')}/",
+                        })
+            
+            # Also check if there's a JSON output file
             try:
-                response = await client.post(
-                    f"{api_url}/api/v1/crawler/products",
-                    json={
-                        "source_page": {
-                            "url": product["url"],
-                            "retailer": "bigbasket",
-                            "title": product["name"],
-                            "content_hash": f"crawler_{hash(product['url'])}",
-                            "extracted_data": product
-                        }
-                    }
-                )
-                if response.status_code in [200, 201]:
-                    sent_count += 1
-            except Exception as e:
-                print(f"Failed to send product: {e}")
-    
-    return {
-        "products_found": len(all_products),
-        "products_sent": sent_count,
-        "sample": all_products[:3] if all_products else []
-    }
+                with open(f"{request.retailer}_results.json", "r") as f:
+                    json_products = json.load(f)
+                    if json_products:
+                        products = json_products[:request.max_products]
+            except:
+                pass
+            
+            print(f"✅ Simple crawl found {len(products)} products")
+            
+            return {
+                "products_found": len(products),
+                "products_sent": 0,  # Not sending in simple mode
+                "sample": products[:10],  # Return up to 10 products
+                "proxy_used": "gcp" in env.get("SCRAPY_SETTINGS_MODULE", "").lower()
+            }
+        else:
+            print(f"❌ Crawler failed: {result.stderr}")
+            return {
+                "error": "Crawler failed",
+                "products_found": 0,
+                "sample": [],
+                "details": result.stderr[:500]
+            }
+            
+    except subprocess.TimeoutExpired:
+        return {
+            "error": "Crawler timeout",
+            "products_found": 0,
+            "sample": []
+        }
+    except Exception as e:
+        return {
+            "error": str(e),
+            "products_found": 0,
+            "sample": []
+        }
 
 
 if __name__ == "__main__":
