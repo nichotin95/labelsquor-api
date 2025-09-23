@@ -41,6 +41,44 @@ async def root():
     }
 
 
+@app.get("/test-proxy")
+async def test_proxy():
+    """Test proxy functionality"""
+    import httpx
+    
+    # Try to get current IP
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get("https://api.ipify.org?format=json", timeout=10)
+            direct_ip = response.json()["ip"]
+    except:
+        direct_ip = "Failed to get IP"
+    
+    # Test if we're in GCP environment
+    is_gcp = "gcp" in os.environ.get("SCRAPY_SETTINGS_MODULE", "").lower()
+    
+    # Test BigBasket access
+    test_url = "https://www.bigbasket.com/api/v3.0/header/get-header-config/"
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(test_url, timeout=10)
+            bigbasket_status = response.status_code
+            bigbasket_response = "Success" if bigbasket_status == 200 else f"Status: {bigbasket_status}"
+    except Exception as e:
+        bigbasket_status = 0
+        bigbasket_response = str(e)
+    
+    return {
+        "direct_ip": direct_ip,
+        "is_gcp_environment": is_gcp,
+        "bigbasket_test": {
+            "status_code": bigbasket_status,
+            "response": bigbasket_response
+        },
+        "proxy_info": "Proxy rotation enabled via Scrapy middleware" if is_gcp else "No proxy"
+    }
+
+
 @app.post("/crawl", response_model=CrawlResponse)
 async def trigger_crawl(request: CrawlRequest, background_tasks: BackgroundTasks):
     """Trigger a crawl with anti-blocking measures"""
