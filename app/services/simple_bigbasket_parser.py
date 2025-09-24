@@ -7,6 +7,7 @@ BigBasket returns product data as JSON in the HTML
 import httpx
 import json
 import re
+import os
 from typing import List, Dict, Any
 
 
@@ -18,13 +19,24 @@ class SimpleBigBasketParser:
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         }
+        # ScrapingDog API configuration
+        self.scrapingdog_api_key = os.getenv('SCRAPINGDOG_API_KEY', '68d3f5896e702d62b1475720')
+        self.scrapingdog_url = 'https://api.scrapingdog.com/scrape'
     
     def search_products(self, query: str) -> List[Dict[str, Any]]:
         """Search for products and extract data"""
         url = f"https://www.bigbasket.com/ps/?q={query}"
         
         print(f"🔍 Searching BigBasket for: {query}")
-        response = httpx.get(url, headers=self.headers)
+        
+        # Use ScrapingDog API to bypass anti-scraping measures
+        params = {
+            'api_key': self.scrapingdog_api_key,
+            'url': url,
+            'render': 'false'  # We don't need JS rendering for BigBasket
+        }
+        
+        response = httpx.get(self.scrapingdog_url, params=params)
         
         if response.status_code != 200:
             print(f"❌ Failed with status: {response.status_code}")
@@ -148,7 +160,14 @@ class SimpleBigBasketParser:
         """Get detailed product info from product page"""
         print(f"\n📄 Fetching product details from: {product_url}")
         
-        response = httpx.get(product_url, headers=self.headers)
+        # Use ScrapingDog API for product details
+        params = {
+            'api_key': self.scrapingdog_api_key,
+            'url': product_url,
+            'render': 'false'
+        }
+        
+        response = httpx.get(self.scrapingdog_url, params=params)
         if response.status_code != 200:
             return {}
         
