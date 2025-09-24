@@ -36,10 +36,19 @@ class SimpleBigBasketParser:
             'render': 'false'  # We don't need JS rendering for BigBasket
         }
         
-        response = httpx.get(self.scrapingdog_url, params=params)
+        try:
+            response = httpx.get(self.scrapingdog_url, params=params, timeout=60.0)
+        except httpx.TimeoutException:
+            print(f"❌ Request timed out - ScrapingDog may be slow or API key invalid")
+            return []
+        except Exception as e:
+            print(f"❌ Error calling ScrapingDog API: {str(e)}")
+            return []
         
         if response.status_code != 200:
             print(f"❌ Failed with status: {response.status_code}")
+            if response.status_code == 403:
+                print(f"❌ ScrapingDog API key may be invalid or quota exceeded")
             return []
         
         # Extract Next.js data
@@ -167,8 +176,17 @@ class SimpleBigBasketParser:
             'render': 'false'
         }
         
-        response = httpx.get(self.scrapingdog_url, params=params)
+        try:
+            response = httpx.get(self.scrapingdog_url, params=params, timeout=60.0)
+        except httpx.TimeoutException:
+            print(f"❌ Request timed out - ScrapingDog may be slow")
+            return {}
+        except Exception as e:
+            print(f"❌ Error calling ScrapingDog API: {str(e)}")
+            return {}
+            
         if response.status_code != 200:
+            print(f"❌ Failed to fetch product details: {response.status_code}")
             return {}
         
         # Extract Next.js data from product page
