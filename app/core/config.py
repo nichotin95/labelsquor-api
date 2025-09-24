@@ -44,7 +44,7 @@ class Settings(BaseSettings):
 
     # Add missing config attributes for main.py
     PROJECT_NAME: str = "LabelSquor API"
-    VERSION: str = "1.0.0"
+    VERSION: str = "1.0.1"
     ENVIRONMENT: str = "development"
     API_V1_STR: str = "/api/v1"
     DEBUG: bool = True
