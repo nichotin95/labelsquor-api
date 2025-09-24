@@ -459,39 +459,38 @@ class DiscoveryOrchestrator:
                 # Search for products
                 search_results = await self._search_bigbasket_products(category_name)
                 
-                # Get detailed data for each product
+                # Process products from search results
                 for result in search_results[: task.config.get("max_products", 10)]:
                     try:
-                        # Get additional details from product page
-                        detailed = await self._get_bigbasket_product_details(result["url"])
-                        
-                        # Merge search result with detailed data
                         # Reduced logging for production
                         if os.getenv("DEBUG_DISCOVERY", "false").lower() == "true":
                             logger.info(f"Processing product: {result.get('name', 'Unknown')}")
+                        
+                        # Extract brand name if it's a dict
+                        brand = result.get("brand", "")
+                        if isinstance(brand, dict):
+                            brand = brand.get("name", "")
+                        
                         products.append(
                             {
                                 "url": result["url"],
                                 "name": result.get("name", ""),
-                                "brand": result.get("brand", ""),
+                                "brand": brand,
                                 "retailer": task.retailer_slug,
                                 "category": category_name,
                                 "images": result.get("images", []),
                                 "price": result.get("price", 0),
                                 "mrp": result.get("mrp", 0),
+                                "discount": result.get("discount", "0%"),
                                 "extracted_data": {
                                     "usp_text": result.get("usp", ""),
-                                    "description": detailed.get("description", "") if detailed else "",
-                                    "ingredients": detailed.get("ingredients", "") if detailed else "",
-                                    "nutrition": detailed.get("nutrition", "") if detailed else "",
-                                    "manufacturer": detailed.get("manufacturer", "") if detailed else "",
-                                    "country_of_origin": detailed.get("country_of_origin", "") if detailed else "",
-                                    "shelf_life": detailed.get("shelf_life", "") if detailed else "",
                                     "pack_size": result.get("pack_size", ""),
+                                    "pack_desc": result.get("pack_desc", ""),
                                     "in_stock": result.get("in_stock", True),
                                     "rating": result.get("rating", 0),
                                     "review_count": result.get("review_count", 0),
                                     "crawled_at": datetime.utcnow().isoformat(),
+                                    "raw_data": result.get("raw_data", {}),
                                 },
                             }
                         )
@@ -578,10 +577,10 @@ class DiscoveryOrchestrator:
                         'category': tab.get('slug', ''),
                         'url': f"https://www.bigbasket.com{product.get('absolute_url', '')}",
                         
-                        # Pricing - handle string prices
-                        'price': self._parse_price(product.get('pricing', {}).get('discount', {}).get('sp', product.get('sp', '0'))),
-                        'mrp': self._parse_price(product.get('pricing', {}).get('discount', {}).get('mrp', product.get('mrp', '0'))),
-                        'discount': product.get('pricing', {}).get('discount', {}).get('d', 0),
+                        # Pricing - handle nested price structure
+                        'price': self._parse_price(product.get('pricing', {}).get('discount', {}).get('prim_price', {}).get('sp', '0')),
+                        'mrp': self._parse_price(product.get('pricing', {}).get('discount', {}).get('mrp', '0')),
+                        'discount': product.get('pricing', {}).get('discount', {}).get('d_text', '0%'),
                         
                         # Images
                         'images': self._extract_images(product),
@@ -610,52 +609,6 @@ class DiscoveryOrchestrator:
             logger.error(f"❌ Error parsing data: {e}")
             return []
     
-    async def _get_bigbasket_product_details(self, product_url: str) -> Dict[str, Any]:
-        """Get detailed product info from BigBasket product page"""
-        logger.info(f"📄 Fetching product details from: {product_url}")
-        
-        # Use ScrapingDog API for product details
-        params = {
-            'api_key': self.scrapingdog_api_key,
-            'url': product_url,
-            'render': 'false'
-        }
-        
-        async with httpx.AsyncClient() as client:
-            try:
-                response = await client.get(self.scrapingdog_url, params=params, timeout=60.0)
-            except httpx.TimeoutException:
-                logger.error(f"❌ Request timed out - ScrapingDog may be slow")
-                return {}
-            except Exception as e:
-                logger.error(f"❌ Error calling ScrapingDog API: {str(e)}")
-                return {}
-                
-        if response.status_code != 200:
-            logger.error(f"❌ Failed to fetch product details: {response.status_code}")
-            return {}
-        
-        # Extract Next.js data from product page
-        match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', response.text)
-        if not match:
-            return {}
-        
-        try:
-            data = json.loads(match.group(1))
-            product_data = data.get('props', {}).get('pageProps', {}).get('productDetails', {})
-            
-            # Product pages have more detailed info
-            return {
-                'description': product_data.get('long_desc', ''),
-                'ingredients': product_data.get('variable_weight', {}).get('ingredient_text', ''),
-                'nutrition': product_data.get('variable_weight', {}).get('nutrition_text', ''),
-                'manufacturer': product_data.get('manufacturer', ''),
-                'country_of_origin': product_data.get('country_of_origin', ''),
-                'shelf_life': product_data.get('shelf_life', ''),
-                'all_images': self._extract_images(product_data),
-            }
-        except:
-            return {}
     
     def _parse_price(self, price_value) -> float:
         """Parse price from string or number"""
