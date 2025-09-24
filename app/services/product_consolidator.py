@@ -554,33 +554,10 @@ class ConsolidationPipeline:
         results = []
 
         if retailer == "bigbasket":
-            from app.services.simple_bigbasket_parser import SimpleBigBasketParser
-
-            parser = SimpleBigBasketParser()
-
-            # Search by product name
-            search_term = f"{brand} {product_name}" if brand else product_name
-            search_results = parser.search_products(search_term)
-
-            # Get detailed data for matching products
-            for result in search_results[:5]:  # Limit to 5 results per retailer
-                if self._is_likely_match(result, product_name, brand):
-                    try:
-                        detailed = parser.get_product_details(result["url"])
-                        if detailed:
-                            results.append(
-                                {
-                                    "url": result["url"],
-                                    "name": detailed.get("name", result["name"]),
-                                    "brand": detailed.get("brand", result["brand"]),
-                                    "retailer": retailer,
-                                    "images": detailed.get("all_image_urls", []),
-                                    "price": detailed.get("price"),
-                                    "extracted_data": detailed,
-                                }
-                            )
-                    except Exception as e:
-                        logger.error(f"Error fetching product details: {str(e)}")
+            # BigBasket search is now handled through DiscoveryOrchestrator with ScrapingDog integration
+            # This method is kept for backward compatibility but returns empty results
+            logger.info(f"BigBasket search for '{product_name}' should be done through DiscoveryOrchestrator")
+            return []
 
         else:
             # Mock data for other retailers

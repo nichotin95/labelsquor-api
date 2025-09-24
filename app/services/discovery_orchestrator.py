@@ -3,11 +3,14 @@ Discovery Orchestrator - Manages product discovery across all retailers
 """
 
 import asyncio
+import httpx
+import json
 import os
+import re
 from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
 
-from sqlalchemy import and_, or_, select
+from sqlalchemy import and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.crawler_config import crawler_config
@@ -25,6 +28,9 @@ class DiscoveryOrchestrator:
     def __init__(self, db: AsyncSession):
         self.db = db
         self.taxonomy = TaxonomyManager()
+        # ScrapingDog API configuration
+        self.scrapingdog_api_key = os.getenv('SCRAPINGDOG_API_KEY', '68d3f5896e702d62b1475720')
+        self.scrapingdog_url = 'https://api.scrapingdog.com/scrape'
 
     async def initialize_seed_data(self):
         """Initialize search terms and categories if not present"""
@@ -443,58 +449,58 @@ class DiscoveryOrchestrator:
         """Execute a discovery task and return product data"""
         logger.info(f"Executing task: {task.task_type} for {task.retailer_slug}")
 
-        # Import the crawler parser
-        from app.services.simple_bigbasket_parser import SimpleBigBasketParser
-
         products = []
 
         if task.task_type == "category_discovery" and task.retailer_slug == "bigbasket":
-            # Use actual BigBasket parser
-            parser = SimpleBigBasketParser()
-
-            # For category, we'll search using the category name
+            # Direct BigBasket scraping with ScrapingDog
             category_name = task.config.get("category", "snacks")
-            search_results = parser.search_products(category_name)
-
-            # Get detailed data for each product
-            for result in search_results[: task.config.get("max_products", 10)]:
-                try:
-                    # Get additional details from product page
-                    detailed = parser.get_product_details(result["url"])
-                    
-                    # Merge search result with detailed data
-                    # Reduced logging for production
-                    if os.getenv("DEBUG_DISCOVERY", "false").lower() == "true":
-                        logger.info(f"Processing product: {result.get('name', 'Unknown')}")
-                    products.append(
-                        {
-                            "url": result["url"],
-                            "name": result.get("name", ""),
-                            "brand": result.get("brand", ""),
-                            "retailer": task.retailer_slug,
-                            "category": category_name,
-                            "images": result.get("images", []),
-                            "price": result.get("price", 0),
-                            "mrp": result.get("mrp", 0),
-                            "extracted_data": {
-                                "usp_text": result.get("usp", ""),
-                                "description": detailed.get("description", "") if detailed else "",
-                                "ingredients": detailed.get("ingredients", "") if detailed else "",
-                                "nutrition": detailed.get("nutrition", "") if detailed else "",
-                                "manufacturer": detailed.get("manufacturer", "") if detailed else "",
-                                "country_of_origin": detailed.get("country_of_origin", "") if detailed else "",
-                                "shelf_life": detailed.get("shelf_life", "") if detailed else "",
-                                "pack_size": result.get("pack_size", ""),
-                                "in_stock": result.get("in_stock", True),
-                                "rating": result.get("rating", 0),
-                                "review_count": result.get("review_count", 0),
-                                "crawled_at": datetime.utcnow().isoformat(),
-                            },
-                        }
-                    )
-                except Exception as e:
-                    logger.error(f"Error processing product: {str(e)}")
-                    continue
+            
+            try:
+                # Search for products
+                search_results = await self._search_bigbasket_products(category_name)
+                
+                # Get detailed data for each product
+                for result in search_results[: task.config.get("max_products", 10)]:
+                    try:
+                        # Get additional details from product page
+                        detailed = await self._get_bigbasket_product_details(result["url"])
+                        
+                        # Merge search result with detailed data
+                        # Reduced logging for production
+                        if os.getenv("DEBUG_DISCOVERY", "false").lower() == "true":
+                            logger.info(f"Processing product: {result.get('name', 'Unknown')}")
+                        products.append(
+                            {
+                                "url": result["url"],
+                                "name": result.get("name", ""),
+                                "brand": result.get("brand", ""),
+                                "retailer": task.retailer_slug,
+                                "category": category_name,
+                                "images": result.get("images", []),
+                                "price": result.get("price", 0),
+                                "mrp": result.get("mrp", 0),
+                                "extracted_data": {
+                                    "usp_text": result.get("usp", ""),
+                                    "description": detailed.get("description", "") if detailed else "",
+                                    "ingredients": detailed.get("ingredients", "") if detailed else "",
+                                    "nutrition": detailed.get("nutrition", "") if detailed else "",
+                                    "manufacturer": detailed.get("manufacturer", "") if detailed else "",
+                                    "country_of_origin": detailed.get("country_of_origin", "") if detailed else "",
+                                    "shelf_life": detailed.get("shelf_life", "") if detailed else "",
+                                    "pack_size": result.get("pack_size", ""),
+                                    "in_stock": result.get("in_stock", True),
+                                    "rating": result.get("rating", 0),
+                                    "review_count": result.get("review_count", 0),
+                                    "crawled_at": datetime.utcnow().isoformat(),
+                                },
+                            }
+                        )
+                    except Exception as e:
+                        logger.error(f"Error processing product: {str(e)}")
+                        continue
+            except Exception as e:
+                logger.error(f"Error searching BigBasket: {str(e)}")
+                return []
 
         elif task.task_type == "category_discovery":
             # Mock data for other retailers
@@ -517,6 +523,193 @@ class DiscoveryOrchestrator:
 
         logger.info(f"Returning {len(products)} products from execute_task")
         return products
-
-
-from sqlalchemy import func  # Add this import at the top
+    
+    async def _search_bigbasket_products(self, query: str) -> List[Dict[str, Any]]:
+        """Search for products on BigBasket using ScrapingDog"""
+        url = f"https://www.bigbasket.com/ps/?q={query}"
+        
+        logger.info(f"🔍 Searching BigBasket for: {query}")
+        
+        # Use ScrapingDog API to bypass anti-scraping measures
+        params = {
+            'api_key': self.scrapingdog_api_key,
+            'url': url,
+            'render': 'false'  # We don't need JS rendering for BigBasket
+        }
+        
+        async with httpx.AsyncClient() as client:
+            try:
+                response = await client.get(self.scrapingdog_url, params=params, timeout=60.0)
+            except httpx.TimeoutException:
+                logger.error(f"❌ Request timed out - ScrapingDog may be slow or API key invalid")
+                return []
+            except Exception as e:
+                logger.error(f"❌ Error calling ScrapingDog API: {str(e)}")
+                return []
+        
+        if response.status_code != 200:
+            logger.error(f"❌ Failed with status: {response.status_code}")
+            if response.status_code == 403:
+                logger.error(f"❌ ScrapingDog API key may be invalid or quota exceeded")
+            return []
+        
+        # Extract Next.js data
+        match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', response.text)
+        if not match:
+            logger.error("❌ No Next.js data found")
+            return []
+        
+        try:
+            data = json.loads(match.group(1))
+            products = []
+            
+            # Navigate to products
+            tabs = data.get('props', {}).get('pageProps', {}).get('SSRData', {}).get('tabs', [])
+            
+            for tab in tabs:
+                tab_products = tab.get('product_info', {}).get('products', [])
+                
+                for product in tab_products:
+                    # Extract clean product data
+                    cleaned = {
+                        'id': product.get('id'),
+                        'name': product.get('p_desc', product.get('desc', '')),
+                        'brand': product.get('p_brand', product.get('brand', '')),
+                        'category': tab.get('slug', ''),
+                        'url': f"https://www.bigbasket.com{product.get('absolute_url', '')}",
+                        
+                        # Pricing - handle string prices
+                        'price': self._parse_price(product.get('pricing', {}).get('discount', {}).get('sp', product.get('sp', '0'))),
+                        'mrp': self._parse_price(product.get('pricing', {}).get('discount', {}).get('mrp', product.get('mrp', '0'))),
+                        'discount': product.get('pricing', {}).get('discount', {}).get('d', 0),
+                        
+                        # Images
+                        'images': self._extract_images(product),
+                        
+                        # Additional info
+                        'pack_size': product.get('w', ''),
+                        'pack_desc': product.get('pack_desc', ''),
+                        'in_stock': product.get('availability', {}).get('avail_status') == '001',
+                        'rating': product.get('rating_info', {}).get('avg_rating', 0),
+                        'review_count': product.get('rating_info', {}).get('rating_count', 0),
+                        
+                        # USP might have ingredient hints
+                        'usp': product.get('usp', ''),
+                        
+                        # Raw data for further processing
+                        'raw_data': product
+                    }
+                    
+                    products.append(cleaned)
+                    logger.info(f"✅ Found: {cleaned['name']} - ₹{cleaned['price']}")
+            
+            logger.info(f"📦 Total products found: {len(products)}")
+            return products
+            
+        except Exception as e:
+            logger.error(f"❌ Error parsing data: {e}")
+            return []
+    
+    async def _get_bigbasket_product_details(self, product_url: str) -> Dict[str, Any]:
+        """Get detailed product info from BigBasket product page"""
+        logger.info(f"📄 Fetching product details from: {product_url}")
+        
+        # Use ScrapingDog API for product details
+        params = {
+            'api_key': self.scrapingdog_api_key,
+            'url': product_url,
+            'render': 'false'
+        }
+        
+        async with httpx.AsyncClient() as client:
+            try:
+                response = await client.get(self.scrapingdog_url, params=params, timeout=60.0)
+            except httpx.TimeoutException:
+                logger.error(f"❌ Request timed out - ScrapingDog may be slow")
+                return {}
+            except Exception as e:
+                logger.error(f"❌ Error calling ScrapingDog API: {str(e)}")
+                return {}
+                
+        if response.status_code != 200:
+            logger.error(f"❌ Failed to fetch product details: {response.status_code}")
+            return {}
+        
+        # Extract Next.js data from product page
+        match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', response.text)
+        if not match:
+            return {}
+        
+        try:
+            data = json.loads(match.group(1))
+            product_data = data.get('props', {}).get('pageProps', {}).get('productDetails', {})
+            
+            # Product pages have more detailed info
+            return {
+                'description': product_data.get('long_desc', ''),
+                'ingredients': product_data.get('variable_weight', {}).get('ingredient_text', ''),
+                'nutrition': product_data.get('variable_weight', {}).get('nutrition_text', ''),
+                'manufacturer': product_data.get('manufacturer', ''),
+                'country_of_origin': product_data.get('country_of_origin', ''),
+                'shelf_life': product_data.get('shelf_life', ''),
+                'all_images': self._extract_images(product_data),
+            }
+        except:
+            return {}
+    
+    def _parse_price(self, price_value) -> float:
+        """Parse price from string or number"""
+        if isinstance(price_value, (int, float)):
+            return float(price_value)
+        if isinstance(price_value, str):
+            # Remove currency symbols and convert
+            price_str = price_value.replace('₹', '').replace(',', '').strip()
+            try:
+                return float(price_str)
+            except:
+                return 0.0
+        return 0.0
+    
+    def _extract_images(self, product: Dict) -> List[str]:
+        """Extract all product images"""
+        images = []
+        
+        # Main image
+        if product.get('primary_image'):
+            images.append(product['primary_image'])
+        
+        # Image array
+        if product.get('images'):
+            for img in product['images']:
+                if isinstance(img, dict):
+                    # Different resolution keys
+                    for res in ['l', 'm', 's', 'xl']:
+                        if img.get(res):
+                            images.append(img[res])
+                            break
+                elif isinstance(img, str):
+                    images.append(img)
+        
+        # Image paths from different resolutions
+        for key in ['img_s', 'img_m', 'img_l', 'img_xl']:
+            if product.get(key):
+                images.append(product[key])
+        
+        # Tab images
+        if product.get('tabs', {}).get('images'):
+            for tab_img in product['tabs']['images']:
+                if isinstance(tab_img, str):
+                    images.append(tab_img)
+        
+        # Clean URLs - fix double domain issue
+        cleaned_images = []
+        for img in images:
+            if img and isinstance(img, str):
+                # Remove double domain
+                img = img.replace('https://www.bbassets.com/mod_images/bb_images/https://www.bbassets.com', 'https://www.bbassets.com')
+                # Ensure proper URL
+                if not img.startswith('http'):
+                    img = f"https://www.bbassets.com/{img.lstrip('/')}"
+                cleaned_images.append(img)
+        
+        return list(dict.fromkeys(cleaned_images))  # Remove duplicates while preserving order
